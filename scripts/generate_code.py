@@ -9,10 +9,6 @@ def generate_code(prompt):
         api_key=os.getenv("DEEPSEEK_API_KEY"),
     )
     completion = client.chat.completions.create(
-        extra_headers={
-            "HTTP-Referer": os.getenv("HTTP_REFERER", "https://yourwebsite.com"),
-            "X-Title": os.getenv("X_TITLE", "YourSiteName"),
-        },
         extra_body={},
         model="deepseek/deepseek-r1:free",
         messages=[
