@@ -3,10 +3,15 @@ import os
 from datetime import datetime
 
 def generate_code(prompt):
+    # Verificar que la API key esté definida
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        raise ValueError("La variable de entorno DEEPSEEK_API_KEY no está definida.")
+    
     # Inicializa el cliente usando la API key del entorno
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("DEEPSEEK_API_KEY"),
+        api_key=api_key,
     )
     completion = client.chat.completions.create(
         extra_body={},
@@ -38,3 +43,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
