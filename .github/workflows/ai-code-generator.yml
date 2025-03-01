@@ -3,6 +3,8 @@ name: Generate Code with AI
 on:
   schedule:
     - cron: '0 0 * * *'  # Se ejecuta diariamente a medianoche (UTC)
+  workflow_dispatch:  # Esto permite que ejecutes el workflow manualmente
+
 
 jobs:
   generate-code:
