@@ -80,9 +80,10 @@ def main():
     
     # --- Para el programa en Python ---
     python_prompt = (
-        "Genera un programa sencillo en Python que realice una tarea útil y educativa. "
-        "Devuélvelo SOLO como un bloque de código entre triple backticks, sin texto adicional. "
-        "La primera línea debe ser un comentario en el siguiente formato: '# Nombre: <nombre descriptivo>'."
+        "Tarea: Genera un programa sencillo en Python que realice una tarea útil y educativa.\n"
+        "Requisito: El código debe estar contenido en un bloque de código entre triple backticks sin texto adicional, y la primera línea debe ser un comentario en el siguiente formato: '# Nombre: <nombre descriptivo>'.\n"
+        "Expectativa: Se espera un bloque de código funcional, limpio y autoexplicativo que cumpla con la tarea solicitada.\n"
+        "Formato: Devuelve la respuesta únicamente como un bloque de código entre triple backticks (```), sin texto extra."
     )
     python_code_raw = generate_code(python_prompt)
     if python_code_raw is not None:
@@ -99,9 +100,10 @@ def main():
         
         # Generar README para el programa Python
         readme_prompt_py = (
-            f"Genera un archivo README en markdown para el programa '{prog_name_py}' en Python. "
-            "El README debe explicar de forma visualmente atractiva qué hace el programa y cómo usarlo, "
-            "usando títulos, listas y elementos gráficos en markdown si es posible. Devuélvelo SOLO como un bloque de código entre triple backticks, sin texto adicional."
+            f"Tarea: Genera un archivo README en markdown para el programa '{prog_name_py}' en Python.\n"
+            "Requisito: El README debe explicar de forma visualmente atractiva qué hace el programa y cómo usarlo, utilizando títulos, listas y elementos gráficos en markdown.\n"
+            "Expectativa: Se espera un README claro, informativo y estético que brinde instrucciones precisas sobre el funcionamiento del programa.\n"
+            "Formato: Devuelve la respuesta únicamente como un bloque de código entre triple backticks (```), sin texto extra."
         )
         readme_py = generate_code(readme_prompt_py)
         if readme_py is not None:
@@ -110,9 +112,10 @@ def main():
     
     # --- Para el programa en Matlab ---
     matlab_prompt = (
-        "Genera un programa sencillo en Matlab que realice una tarea útil y educativa. "
-        "Devuélvelo SOLO como un bloque de código entre triple backticks, sin texto adicional. "
-        "La primera línea debe ser un comentario en el siguiente formato: '% Nombre: <nombre descriptivo>'."
+        "Tarea: Genera un programa sencillo en Matlab que realice una tarea útil y educativa.\n"
+        "Requisito: El código debe estar contenido íntegramente en un bloque de código entre triple backticks sin texto adicional, y la primera línea debe ser un comentario en el siguiente formato: '% Nombre: <nombre descriptivo>'.\n"
+        "Expectativa: Se espera un bloque de código funcional y bien documentado que cumpla con la tarea solicitada.\n"
+        "Formato: Devuelve la respuesta únicamente como un bloque de código entre triple backticks (```), sin texto extra."
     )
     matlab_code_raw = generate_code(matlab_prompt)
     if matlab_code_raw is not None:
@@ -128,9 +131,10 @@ def main():
         
         # Generar README para el programa Matlab
         readme_prompt_mat = (
-            f"Genera un archivo README en markdown para el programa '{prog_name_mat}' en Matlab. "
-            "El README debe explicar de forma visualmente atractiva qué hace el programa y cómo usarlo, "
-            "usando títulos, listas y elementos gráficos en markdown si es posible. Devuélvelo SOLO como un bloque de código entre triple backticks, sin texto adicional."
+            f"Tarea: Genera un archivo README en markdown para el programa '{prog_name_mat}' en Matlab.\n"
+            "Requisito: El README debe explicar de forma visualmente atractiva qué hace el programa y cómo usarlo, utilizando títulos, listas y elementos gráficos en markdown.\n"
+            "Expectativa: Se espera un README claro, informativo y estético que brinde instrucciones precisas sobre el funcionamiento del programa.\n"
+            "Formato: Devuelve la respuesta únicamente como un bloque de código entre triple backticks (```), sin texto extra."
         )
         readme_mat = generate_code(readme_prompt_mat)
         if readme_mat is not None:
@@ -139,5 +143,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
