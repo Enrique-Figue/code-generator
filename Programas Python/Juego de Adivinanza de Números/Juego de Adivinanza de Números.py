@@ -1,25 +1,27 @@
 import random
 
-def main():
+def juego_adivina_numero():
     numero_secreto = random.randint(1, 100)
     intentos = 0
+    adivinado = False
     
     print("¡Adivina el número entre 1 y 100!")
     
-    while True:
+    while not adivinado:
         try:
-            guess = int(input("Tu intento: "))
+            intento = int(input("Ingresa tu intento: "))
             intentos += 1
             
-            if guess < numero_secreto:
-                print("Muy bajo. Intenta de nuevo.")
-            elif guess > numero_secreto:
-                print("Muy alto. Intenta de nuevo.")
+            if intento < numero_secreto:
+                print("Demasiado bajo. Intenta de nuevo.")
+            elif intento > numero_secreto:
+                print("Demasiado alto. Intenta de nuevo.")
             else:
-                print(f"¡Correcto! Lo encontraste en {intentos} intentos.")
-                break
+                adivinado = True
+                print(f"¡Correcto! Lo lograste en {intentos} intentos.")
+        
         except ValueError:
-            print("Por favor, ingresa un número válido.")
+            print("Error: Ingresa un número entero válido.")
 
 if __name__ == "__main__":
-    main()
+    juego_adivina_numero()
