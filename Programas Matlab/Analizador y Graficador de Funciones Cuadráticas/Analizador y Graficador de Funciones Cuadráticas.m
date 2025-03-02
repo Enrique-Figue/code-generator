@@ -1,71 +1,61 @@
-% Descripción: Este programa solicita coeficientes de una función cuadrática,
-% calcula sus raíces, vértice y dirección, luego grafica la función resultante.
+% Descripción: Calcula y grafica una función cuadrática, mostrando sus raíces,
+%              vértice, dirección de apertura y discriminante. Ideal para
+%              visualizar propiedades fundamentales de parábolas.
 
-clc; clear; close all;
+clc;
+clear all;
+close all;
 
 % Solicitar coeficientes al usuario
-disp('Ingrese coeficientes de la función cuadrática ax² + bx + c:');
-a = input('Coeficiente a: ');
-while a == 0  % Validar que sea función cuadrática
-    disp('El coeficiente "a" no puede ser cero');
-    a = input('Ingrese nuevamente el coeficiente a: ');
-end
-b = input('Coeficiente b: ');
-c = input('Coeficiente c: ');
+a = input('Introduce el coeficiente cuadrático (a): ');
+b = input('Introduce el coeficiente lineal (b): ');
+c = input('Introduce el término independiente (c): ');
 
-% Calcular discriminante y raíces
-discriminante = b^2 - 4*a*c;
-if discriminante >= 0
-    raiz1 = (-b + sqrt(discriminante))/(2*a);
-    raiz2 = (-b - sqrt(discriminante))/(2*a);
-else
-    parte_real = -b/(2*a);
-    parte_imag = sqrt(abs(discriminante))/(2*a);
-    raiz1 = complex(parte_real, parte_imag);
-    raiz2 = complex(parte_real, -parte_imag);
-end
-
-% Calcular coordenadas del vértice
-x_vertice = -b/(2*a);
-y_vertice = a*x_vertice^2 + b*x_vertice + c;
+% Calcular propiedades clave
+discriminante = b^2 - 4*a*c;          % Fórmula del discriminante
+xv = -b/(2*a);                        % Coordenada x del vértice
+yv = a*xv^2 + b*xv + c;               % Coordenada y del vértice
 
 % Determinar dirección de apertura
-direccion = '';
-if a > 0
-    direccion = 'hacia arriba';
-else
+direccion = 'hacia arriba';
+if a < 0
     direccion = 'hacia abajo';
 end
 
-% Mostrar resultados numéricos
-fprintf('\nResultados:\n');
-fprintf('Raíz 1: %s\n', num2str(raiz1));
-fprintf('Raíz 2: %s\n', num2str(raiz2));
-fprintf('Vértice en (%.2f, %.2f)\n', x_vertice, y_vertice);
-fprintf('La parábola abre %s\n\n', direccion);
-
-% Configurar rango de gráfico
-x = linspace(x_vertice-5, x_vertice+5, 400);
-y = a*x.^2 + b*x + c;
-
-% Graficar función
-figure('Color', 'white');
-plot(x, y, 'LineWidth', 2, 'DisplayName', 'Función cuadrática');
-hold on;
-grid on;
-
-% Marcar vértice y raíces reales
-plot(x_vertice, y_vertice, 'ro', 'MarkerSize', 8, 'DisplayName', 'Vértice');
+% Calcular raíces
 if discriminante >= 0
-    plot(raiz1, 0, 'gs', 'MarkerSize', 8, 'DisplayName', 'Raíces reales');
-    plot(raiz2, 0, 'gs', 'MarkerSize', 8, 'HandleVisibility', 'off');
+    x1 = (-b + sqrt(discriminante))/(2*a);
+    x2 = (-b - sqrt(discriminante))/(2*a);
+    raices_str = sprintf('Raíces reales:\n x1 = %.2f\n x2 = %.2f', x1, x2);
+else
+    raices_str = 'No hay raíces reales (raíces complejas)';
 end
 
-% Configuraciones gráficas
-title(sprintf('Gráfico de: %.2fx² + %.2fx + %.2f', a, b, c));
-xlabel('Eje X'); ylabel('Eje Y');
-legend('Location', 'best');
-axis tight;
-ax = gca;
-ax.XAxisLocation = 'origin';  % Eje X en y=0
-ax.YAxisLocation = 'origin';  % Eje Y en x=0
+% Crear vector x centrado en el vértice
+x = linspace(xv-5, xv+5, 400);        % Rango de valores para graficar
+y = a*x.^2 + b*x + c;                 % Evaluar función cuadrática
+
+% Configurar gráfico
+figure('Color','white');
+plot(x,y,'LineWidth', 2);
+hold on;
+grid on;
+title(['Función cuadrática: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
+xlabel('x');
+ylabel('y');
+
+% Marcar vértice
+plot(xv, yv, 'ro', 'MarkerSize', 8, 'LineWidth', 2);
+text(xv, yv+0.5, [' Vértice (' num2str(xv,'%.2f') ', ' num2str(yv,'%.2f') ')'], 'Color', 'red');
+
+% Añadir información de propiedades
+dim = [0.15 0.6 0.2 0.3];
+str = {['Discriminante: ' num2str(discriminante)],...
+       ['Dirección: ' direccion],...
+       raices_str};
+annotation('textbox',dim,'String',str,'FitBoxToText','on','BackgroundColor','#E0E0E0');
+
+% Ajustar vista gráfica
+axis([xv-5 xv+5 yv-5 yv+5]);  % Ventana centrada en el vértice
+legend('Función','Ubicación del vértice', 'Location','best');
+hold off;
