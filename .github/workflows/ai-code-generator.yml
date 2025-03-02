@@ -24,7 +24,7 @@ jobs:
 
       - name: Run AI code generation script
         env:
-          OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           python scripts/generate_code.py
 
