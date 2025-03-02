@@ -28,8 +28,8 @@ jobs:
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: |
-          echo "$GPG_PRIVATE_KEY" | gpg --batch --yes --pinentry-mode loopback --passphrase "$GPG_PASSPHRASE" --import
-          git config --global user.signingkey CFA7A3E5E3A1BDA8
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --yes --pinentry-mode loopback --import
+          git config --global user.signingkey 0F7B24B8645E3F02
           git config --global commit.gpgSign true
 
       - name: Run AI code generation script
