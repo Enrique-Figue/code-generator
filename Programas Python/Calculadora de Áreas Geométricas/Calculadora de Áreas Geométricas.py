@@ -1,78 +1,41 @@
 import math
 
-def calcular_area_triangulo(base, altura):
-    """Calcula el área de un triángulo usando base y altura."""
-    return (base * altura) / 2
-
-def calcular_area_circulo(radio):
-    """Calcula el área de un círculo usando su radio."""
-    return math.pi * radio ** 2
-
-def calcular_area_cuadrado(lado):
-    """Calcula el área de un cuadrado usando la longitud de un lado."""
-    return lado ** 2
-
-def calcular_area_rectangulo(largo, ancho):
-    """Calcula el área de un rectángulo usando largo y ancho."""
-    return largo * ancho
-
 def obtener_numero_positivo(mensaje):
-    """Solicita un número positivo al usuario, repite hasta que sea válido."""
     while True:
         try:
-            valor = float(input(mensaje))
-            if valor > 0:
-                return valor
-            print("¡El número debe ser positivo!")
+            numero = float(input(mensaje))
+            if numero <= 0:
+                print("Error: El número debe ser positivo.")
+            else:
+                return numero
         except ValueError:
-            print("¡Entrada inválida! Ingrese un número.")
+            print("Error: Ingrese un valor numérico válido.")
 
-def main():
-    print("Calculadora de Áreas Geométricas")
-    funciones = {
-        '1': {
-            'nombre': "Triángulo",
-            'func': calcular_area_triangulo,
-            'inputs': ["Base: ", "Altura: "]
-        },
-        '2': {
-            'nombre': "Círculo",
-            'func': calcular_area_circulo,
-            'inputs': ["Radio: "]
-        },
-        '3': {
-            'nombre': "Cuadrado",
-            'func': calcular_area_cuadrado,
-            'inputs': ["Lado: "]
-        },
-        '4': {
-            'nombre': "Rectángulo",
-            'func': calcular_area_rectangulo,
-            'inputs': ["Largo: ", "Ancho: "]
-        }
-    }
+print("Bienvenido a la Calculadora de Áreas")
+while True:
+    print("\nOpciones disponibles:")
+    print("1. Calcular área de un círculo")
+    print("2. Calcular área de un triángulo")
+    print("3. Calcular área de un rectángulo")
+    print("4. Salir")
+    opcion = input("Seleccione una opción (1-4): ")
 
-    while True:
-        print("\nOpciones:")
-        for key, value in funciones.items():
-            print(f"{key}. {value['nombre']}")
-        print("5. Salir")
-
-        opcion = input("Seleccione una figura (1-5): ")
-
-        if opcion == '5':
-            print("¡Hasta luego!")
-            break
-
-        if opcion not in funciones:
-            print("Opción inválida. Intente de nuevo.")
-            continue
-
-        figura = funciones[opcion]
-        print(f"\nCalculando área de {figura['nombre']}:")
-        valores = [obtener_numero_positivo(mensaje) for mensaje in figura['inputs']]
-        area = figura['func'](*valores)
-        print(f"El área es: {area:.2f}\n")
-
-if __name__ == "__main__":
-    main()
+    if opcion == '1':
+        radio = obtener_numero_positivo("Ingrese el radio del círculo: ")
+        area = math.pi * radio ** 2
+        print(f"Área del círculo: {area:.2f}")
+    elif opcion == '2':
+        base = obtener_numero_positivo("Ingrese la base del triángulo: ")
+        altura = obtener_numero_positivo("Ingrese la altura del triángulo: ")
+        area = (base * altura) / 2
+        print(f"Área del triángulo: {area:.2f}")
+    elif opcion == '3':
+        largo = obtener_numero_positivo("Ingrese el largo del rectángulo: ")
+        ancho = obtener_numero_positivo("Ingrese el ancho del rectángulo: ")
+        area = largo * ancho
+        print(f"Área del rectángulo: {area:.2f}")
+    elif opcion == '4':
+        print("¡Hasta luego!")
+        break
+    else:
+        print("Error: Opción no válida. Intente nuevamente.")
