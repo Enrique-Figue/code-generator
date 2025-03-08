@@ -1,17 +1,16 @@
 # 📊 Calculadora de Estadísticas Básicas
 
-![Versión](https://img.shields.io/badge/Versión-1.0.0-blue)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-green)
-![Python](https://img.shields.io/badge/Python-3.8%2B-yellow)
+¡Bienvenido/a a la **Calculadora de Estadísticas Básicas**! Un programa en Python que calcula medidas estadísticas esenciales de forma rápida y precisa.
 
-Programa en Python que calcula estadísticas básicas de un conjunto de números ingresados por el usuario.
-
-## 🌟 Características
-- ✅ Cálculo de **media aritmética**
-- 📉 Determina la **mediana**
-- 📈 Identifica la **moda**
-- 🔄 Calcula **rango** y **desviación estándar**
-- ✨ Interfaz simple desde la terminal
+## 🚀 Características
+- Cálculo de:
+  - **Media aritmética**
+  - **Mediana**
+  - **Moda**
+  - **Desviación estándar**
+  - **Rango**
+- Interfaz intuitiva desde la terminal.
+- Soporta números enteros y decimales.
 
 ## 📥 Instalación
-1. Clona el repositorio:
+1. **Clona el repositorio**:

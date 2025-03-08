@@ -1,26 +1,26 @@
-def main():
+def calcular_estadisticas():
+    numeros = []
+    print("Ingresa números para calcular estadísticas (deja vacío y presiona Enter para finalizar):")
+    
     while True:
-        try:
-            entrada = input("Ingresa números separados por comas: ")
-            numeros = [float(num) for num in entrada.split(',')]
-            if not numeros:
-                raise ValueError("Debes ingresar al menos un número")
+        entrada = input("> ")
+        if entrada == "":
             break
-        except ValueError as e:
-            print(f"Error: {e}. Intenta nuevamente.")
+        try:
+            numeros.append(float(entrada))
+        except ValueError:
+            print("¡Error! Ingresa solo números o deja vacío para terminar")
+    
+    if not numeros:
+        print("No se ingresaron números válidos")
+        return
     
     promedio = sum(numeros) / len(numeros)
-    maximo = max(numeros)
-    minimo = min(numeros)
-    suma = sum(numeros)
-    cantidad = len(numeros)
-    
-    print("\nResultados:")
-    print(f"- Cantidad de números: {cantidad}")
-    print(f"- Suma total: {suma:.2f}")
-    print(f"- Promedio: {promedio:.2f}")
-    print(f"- Máximo: {maximo:.2f}")
-    print(f"- Mínimo: {minimo:.2f}")
+    print(f"\nResultados:")
+    print(f"Cantidad de números: {len(numeros)}")
+    print(f"Promedio: {promedio:.2f}")
+    print(f"Máximo: {max(numeros)}")
+    print(f"Mínimo: {min(numeros)}")
 
 if __name__ == "__main__":
-    main()
+    calcular_estadisticas()
