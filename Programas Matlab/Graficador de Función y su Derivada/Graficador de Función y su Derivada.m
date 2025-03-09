@@ -1,26 +1,46 @@
-% Este programa grafica una función matemática y su derivada en el mismo eje,
-% ayudando a visualizar la relación entre una función y su tasa de cambio.
+% Descripción: Este programa grafica una función matemática y su derivada en un intervalo dado,
+%              permitiendo visualizar la relación entre ambas de manera educativa.
 
-clear all;      % Limpiar espacio de trabajo
-close all;      % Cerrar todas las figuras anteriores
+% Limpiar espacio de trabajo y cerrar todas las figuras existentes
+clear all;
+close all;
 
-syms x;         % Definir variable simbólica
-f(x) = x^3 - 3*x + 2;  % Función a analizar
-df(x) = diff(f, x);     % Calcular derivada simbólica
+% Definir parámetros del usuario
+x_inicio = -5;     % Extremo inicial del intervalo
+x_final = 5;       % Extremo final del intervalo
+n_puntos = 100;    % Número de puntos para la discretización
 
-x_vals = linspace(-3, 3, 100);  % Generar 100 puntos entre -3 y 3
-f_vals = double(f(x_vals));     % Evaluar función en los puntos
-df_vals = double(df(x_vals));   % Evaluar derivada en los puntos
+% Definir la función a analizar (modificable por el usuario)
+funcion = @(x) sin(x);  % Función original (seno como ejemplo)
 
-figure;
-plot(x_vals, f_vals, 'LineWidth', 2, 'DisplayName', 'f(x) = x^3 - 3x + 2'); % Graficar función
+% Crear vector de valores x equiespaciados
+x = linspace(x_inicio, x_final, n_puntos);
+
+% Evaluar la función en los puntos x
+y = funcion(x);
+
+% Calcular derivada numérica usando diferencias finitas
+dy = diff(y) ./ diff(x);      % Aproximación de la derivada
+x_derivada = x(1:end-1) + diff(x)/2;  % Centrar los puntos de la derivada
+
+% Configurar la figura para gráficos
+figure('Color', 'white', 'Name', 'Función y Derivada');
 hold on;
-plot(x_vals, df_vals, '--', 'LineWidth', 2, 'DisplayName', 'f''(x) = 3x^2 - 3'); % Graficar derivada
-hold off;
+grid on;
+box on;
 
-title('Función y su Derivada');
-xlabel('x');
-ylabel('f(x) / f''(x)');
-legend('show', 'Location','best');  % Mostrar leyenda en posición óptima
-grid on;                            % Activar cuadrícula
-axis tight;                         % Ajustar ejes al rango de datos
+% Graficar función original
+plot(x, y, 'b-', 'LineWidth', 2, 'DisplayName', 'f(x) = sin(x)');
+
+% Graficar derivada numérica
+plot(x_derivada, dy, 'r--', 'LineWidth', 2, 'DisplayName', 'f''(x)');
+
+% Personalización del gráfico
+title({'Relación entre una función y su derivada', '(Ejemplo con función seno)'});
+xlabel('Variable Independiente (x)');
+ylabel('Valores de Función/Derivada');
+legend('show', 'Location', 'northeast');
+
+% Ajustar ejes para mejor visualización
+xlim([x_inicio x_final]);
+set(gca, 'FontSize', 12);
