@@ -1,15 +1,17 @@
 # 🌡️ Conversor de Temperaturas Interactivo
 
-¡Convierte temperaturas fácilmente entre Celsius, Fahrenheit y Kelvin con esta herramienta de terminal!
+¡Convierte temperaturas entre Celsius, Fahrenheit y Kelvin de forma rápida y sencilla! Este programa en Python ofrece una interfaz intuitiva en la terminal para realizar conversiones precisas.
 
 ## 🚀 Características
-- **Conversiones soportadas**:
-  - Celsius ↔ Fahrenheit
-  - Celsius ↔ Kelvin
-  - Fahrenheit ↔ Kelvin
-- ✅ Validación de entradas numéricas
-- 🔄 Menú interactivo paso a paso
-- 🎨 Resultados con formato claro
+- ✅ Conversión entre **Celsius**, **Fahrenheit** y **Kelvin**
+- 🔄 Soporta todas las combinaciones posibles de escalas
+- 🎨 Interfaz interactiva con menús numerados
+- 📊 Muestra fórmulas científicas aplicadas
+- 🔁 Opción para realizar múltiples conversiones sin salir
 
-## 📥 Requisitos
-- Python 3.x instalado
+## 📦 Requisitos
+- Python 3.6 o superior
+- Librería `colorama` (para mejor visualización)
+
+## 🛠️ Instalación
+1. Clona el repositorio:

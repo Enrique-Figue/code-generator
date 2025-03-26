@@ -1,58 +1,40 @@
-def celsius_a_fahrenheit(c):
-    return (c * 9/5) + 32
-
-def fahrenheit_a_celsius(f):
-    return (f - 32) * 5/9
-
-def celsius_a_kelvin(c):
-    return c + 273.15
-
-def kelvin_a_celsius(k):
-    return k - 273.15
-
-def fahrenheit_a_kelvin(f):
-    return celsius_a_kelvin(fahrenheit_a_celsius(f))
-
-def kelvin_a_fahrenheit(k):
-    return celsius_a_fahrenheit(kelvin_a_celsius(k))
-
-def mostrar_menu():
-    print("\nOpciones de conversión:")
-    print("1. Celsius a Fahrenheit")
-    print("2. Celsius a Kelvin")
-    print("3. Fahrenheit a Celsius")
-    print("4. Fahrenheit a Kelvin")
-    print("5. Kelvin a Celsius")
-    print("6. Kelvin a Fahrenheit")
-    print("7. Salir")
-
 def main():
+    print("Conversor de Temperaturas (C, F, K)")
     while True:
         try:
-            mostrar_menu()
-            opcion = int(input("Seleccione una opción (1-7): "))
-            if opcion == 7:
+            valor = float(input("\nIngrese la temperatura: "))
+            origen = input("Unidad origen (C/F/K): ").upper()
+            destino = input("Unidad destino (C/F/K): ").upper()
+
+            unidades_validas = {'C', 'F', 'K'}
+            if origen not in unidades_validas or destino not in unidades_validas:
+                print("Error: Unidad no válida. Use C, F o K.")
+                continue
+
+            # Conversiones a Celsius
+            if origen == 'C':
+                temp_c = valor
+            elif origen == 'F':
+                temp_c = (valor - 32) * 5/9
+            elif origen == 'K':
+                temp_c = valor - 273.15
+
+            # Conversiones desde Celsius
+            if destino == 'C':
+                resultado = temp_c
+            elif destino == 'F':
+                resultado = (temp_c * 9/5) + 32
+            elif destino == 'K':
+                resultado = temp_c + 273.15
+
+            print(f"\n{valor}°{origen} = {resultado:.2f}°{destino}")
+
+            if input("\n¿Otra conversión? (s/n): ").lower() != 's':
                 print("¡Hasta luego!")
                 break
-            elif 1 <= opcion <= 6:
-                temp = float(input("Ingrese la temperatura a convertir: "))
-                funciones = {
-                    1: (celsius_a_fahrenheit, "°F"),
-                    2: (celsius_a_kelvin, "K"),
-                    3: (fahrenheit_a_celsius, "°C"),
-                    4: (fahrenheit_a_kelvin, "K"),
-                    5: (kelvin_a_celsius, "°C"),
-                    6: (kelvin_a_fahrenheit, "°F")
-                }
-                funcion, unidad = funciones[opcion]
-                resultado = funcion(temp)
-                print(f"Resultado: {resultado:.2f}{unidad}")
-            else:
-                print("Opción no válida. Intente de nuevo.")
+
         except ValueError:
             print("Error: Ingrese un valor numérico válido.")
-        except:
-            print("Error inesperado. Intente de nuevo.")
 
 if __name__ == "__main__":
     main()
