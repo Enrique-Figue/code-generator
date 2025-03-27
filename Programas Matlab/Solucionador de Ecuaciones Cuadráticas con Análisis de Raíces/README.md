@@ -1,26 +1,24 @@
 # 🧮 Solucionador de Ecuaciones Cuadráticas con Análisis de Raíces
 
-Un programa en MATLAB que resuelve ecuaciones cuadráticas de la forma \( ax^2 + bx + c = 0 \), clasifica sus raíces y genera gráficos interactivos para análisis visual.
+¡Bienvenido al programa que resuelve ecuaciones cuadráticas y analiza sus raíces de forma detallada! Este script de Matlab te ayudará a entender mejor el comportamiento de la parábola asociada a la ecuación.
 
----
+## 📋 Descripción
+El programa resuelve ecuaciones de la forma:  
+$$ ax^2 + bx + c = 0 $$  
+y proporciona:
+- ✅ **Raíces reales o complejas**
+- 📉 **Gráfico de la parábola** con puntos destacados
+- 📊 **Análisis del discriminante**
+- 📍 Coordenadas del **vértice**
+- 🔄 Dirección de apertura de la parábola
 
-## 🌟 Características Principales
-- **Cálculo preciso de raíces** mediante la fórmula cuadrática.
-- **Clasificación de raíces** en reales distintas, reales repetidas o complejas.
-- **Gráfico de la parábola** generada por la ecuación.
-- **Análisis del discriminante** para determinar la naturaleza de las raíces.
-- **Exportación de resultados** a un archivo de texto.
-- **Interfaz intuitiva** con indicaciones paso a paso.
+## 🚀 Características principales
+- Cálculo preciso de raíces usando la fórmula cuadrática
+- Clasificación de raíces (iguales, racionales, irracionales)
+- Visualización gráfica interactiva
+- Informe detallado en consola
 
----
-
-## 📋 Requisitos
-- MATLAB R2020a o superior.
-- Toolbox de **Estadística y Machine Learning** (para funciones de escritura de archivos).
-
----
-
-## 🚀 Instrucciones de Uso
-1. **Clona el repositorio** o descarga los archivos del proyecto.
-2. **Abre MATLAB** y navega al directorio del proyecto.
-3. **Ejecuta el programa** desde la línea de comandos:
+## ⚙️ Instalación y Uso
+1. **Requisitos**:  
+   - MATLAB R2018a o superior
+2. **Ejecución**:
