@@ -1,5 +1,5 @@
 def es_primo(numero):
-    """Determina si un número es primo."""
+    """Determina si un número es primo mediante divisores hasta su raíz cuadrada."""
     if numero < 2:
         return False
     for i in range(2, int(numero**0.5) + 1):
@@ -7,18 +7,17 @@ def es_primo(numero):
             return False
     return True
 
-def generar_primos(maximo):
-    """Genera lista de números primos hasta el valor máximo especificado."""
-    return [num for num in range(2, maximo + 1) if es_primo(num)]
+def generar_primos_hasta(limite):
+    """Genera una lista de números primos hasta el límite especificado."""
+    return [numero for numero in range(2, limite + 1) if es_primo(numero)]
 
-try:
-    entrada = input("Ingrese un número entero positivo: ")
-    n = int(entrada)
-    if n < 2:
-        print("El número debe ser mayor o igual a 2.")
-    else:
-        primos = generar_primos(n)
-        print(f"Números primos hasta {n}:")
-        print(", ".join(map(str, primos)))
-except ValueError:
-    print("Error: Debe ingresar un número entero válido.")
+if __name__ == "__main__":
+    try:
+        entrada = int(input("Ingrese un número entero positivo: "))
+        if entrada < 0:
+            print("¡El número debe ser positivo!")
+        else:
+            primos = generar_primos_hasta(entrada)
+            print(f"Números primos hasta {entrada}: {primos}")
+    except ValueError:
+        print("¡Error: Debes ingresar un número entero válido!")
