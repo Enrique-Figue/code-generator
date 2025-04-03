@@ -1,24 +1,25 @@
 # 🧮 Solucionador de Ecuaciones Cuadráticas con Análisis de Raíces
 
-¡Bienvenido al programa que resuelve ecuaciones cuadráticas y analiza sus raíces de forma detallada! Este script de Matlab te ayudará a entender mejor el comportamiento de la parábola asociada a la ecuación.
+**Resuelve ecuaciones cuadráticas de forma interactiva y visualiza sus propiedades matemáticas.**  
+*Programa en MATLAB para calcular raíces, discriminante, vértice y gráficos de parábolas.*
 
-## 📋 Descripción
-El programa resuelve ecuaciones de la forma:  
-$$ ax^2 + bx + c = 0 $$  
-y proporciona:
-- ✅ **Raíces reales o complejas**
-- 📉 **Gráfico de la parábola** con puntos destacados
-- 📊 **Análisis del discriminante**
-- 📍 Coordenadas del **vértice**
-- 🔄 Dirección de apertura de la parábola
+---
 
-## 🚀 Características principales
-- Cálculo preciso de raíces usando la fórmula cuadrática
-- Clasificación de raíces (iguales, racionales, irracionales)
-- Visualización gráfica interactiva
-- Informe detallado en consola
+## 📌 Características Principales
+- 🔍 **Cálculo de raíces** (reales o complejas) para ecuaciones 𝒂𝒙² + 𝒃𝒙 + 𝒄 = 0.
+- 📐 **Análisis del discriminante** para determinar la naturaleza de las soluciones.
+- 📍 **Cálculo del vértice** de la parábola.
+- 📊 **Gráfica interactiva** con visualización de la ecuación, raíces y vértice.
+- 🧩 **Validación de entradas** para coeficientes numéricos.
 
-## ⚙️ Instalación y Uso
-1. **Requisitos**:  
-   - MATLAB R2018a o superior
-2. **Ejecución**:
+---
+
+## 🛠️ Requisitos
+- **MATLAB R2020a** o superior.
+- **Symbolic Math Toolbox** (para cálculos simbólicos).
+- Archivo del programa: `quadratic_solver.m`.
+
+---
+
+## 🚀 Cómo Usarlo
+1. **Ejecutar el script** en MATLAB:
