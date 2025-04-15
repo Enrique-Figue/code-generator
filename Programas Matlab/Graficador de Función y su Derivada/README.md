@@ -1,25 +1,24 @@
 # 📈 Graficador de Función y su Derivada en MATLAB
 
-¡Bienvenido/a al **Graficador de Función y su Derivada**! Este programa te permite visualizar una función matemática y su derivada en un mismo gráfico, facilitando el análisis de su comportamiento.
+¡Bienvenido al repositorio del **Graficador de Funciones y su Derivada**! Este programa genera gráficas interactivas para visualizar funciones matemáticas y sus derivadas en el mismo eje cartesiano.
 
-## 🚀 Funcionalidades
-- Graficación simultánea de una función y su derivada.
-- Soporte para **funciones simbólicas** (ej: `sin(x)`, `x^2 + 3*x`).
-- Personalización de colores y estilos de línea.
-- Intervalo ajustable para el dominio de la función.
+---
 
-## 📋 Requisitos
-- **MATLAB R2018b** o superior.
-- **Symbolic Math Toolbox** instalado.
+## 🚀 Características Principales
+- ✔️ Gráficos simultáneos de una función y su derivada.
+- 🔢 Soporte para **funciones personalizadas** (trigonométricas, polinómicas, exponenciales).
+- 🎨 Personalización de colores y estilos de línea.
+- 📐 Intervalo de graficación ajustable.
+- 📊 Leyenda interactiva y cuadrícula opcional.
 
-## 🔧 Instalación
-1. Descarga el archivo `graficador_funcion_derivada.m`.
-2. Ábrelo en MATLAB.
+---
 
-## 🖥️ Uso
-1. **Ejecuta el programa** desde el editor de MATLAB.
-2. Sigue las indicaciones en la ventana de comandos:
-   - Ingresa la función en formato MATLAB (ej: `sin(x)`).
-   - Define la variable simbólica (por defecto: `x`).
-   - Especifica el intervalo de graficación (ej: `[0, 10]`).
-3. **¡Listo!** El gráfico se generará automáticamente.
+## 📋 Requisitos Previos
+- [MATLAB](https://www.mathworks.com/products/matlab.html) R2018a o superior.
+- Symbolic Math Toolbox ✅
+
+---
+
+## 🛠️ Instalación y Uso
+1. **Descarga** el archivo `graficador_funcion_derivada.m`.
+2. Ejecuta en MATLAB:
