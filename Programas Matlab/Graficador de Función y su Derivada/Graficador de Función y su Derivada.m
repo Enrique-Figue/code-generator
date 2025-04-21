@@ -1,44 +1,40 @@
-% Descripción: Este programa grafica una función matemática y su derivada numérica en el mismo gráfico,
+% Descripción: Este programa grafica una función matemática y su derivada en un intervalo dado,
 %              permitiendo visualizar la relación entre la función y su tasa de cambio.
 
-% Limpiar espacio de trabajo y cerrar todas las figuras
-clear all;
-close all;
+clc; clear; close all;  % Limpiar entorno
 
-% Definir parámetros
-xInicio = -2*pi;     % Límite inferior del dominio
-xFin = 2*pi;         % Límite superior del dominio
-nPuntos = 100;       % Número de puntos para la discretización
+% Solicitar entrada al usuario
+f = input('Ingrese la función f(x) (ejemplo: @(x) x.^2): ');
+x_inicio = input('Ingrese el valor inicial de x: ');
+x_final = input('Ingrese el valor final de x: ');
 
-% Crear vector de valores x equiespaciados
-x = linspace(xInicio, xFin, nPuntos);
+% Crear vector x y evaluar función
+x = linspace(x_inicio, x_final, 1000);
+y = f(x);
 
-% Definir función original (puede modificarse)
-funcion = sin(x) + 0.5*x;
-
-% Calcular derivada numérica usando diferencias finitas
-derivada = diff(funcion) ./ diff(x);  % Cálculo de la derivada
-xDerivada = x(1:end-1) + diff(x)/2;   % Ajuste del dominio para la derivada
+% Calcular derivada simbólica
+syms xs;  % Variable simbólica
+f_sym = f(xs);  % Función simbólica
+df_sym = diff(f_sym, xs);  % Derivada simbólica
+df = matlabFunction(df_sym);  % Convertir a función numérica
+dy = df(x);
 
 % Configurar figura
-figure('Color', 'white', 'Name', 'Función y su Derivada');
-hold on;  % Mantener ambas gráficas en la misma figura
+figure('Color', 'white', 'Name', 'Función y Derivada');
 
-% Graficar función original
-plot(x, funcion, 'b-', 'LineWidth', 2, 'DisplayName', 'f(x) = sin(x) + 0.5x');
-
-% Graficar derivada numérica
-plot(xDerivada, derivada, 'r--', 'LineWidth', 2, 'DisplayName', 'Derivada numérica');
-
-% Personalizar gráfico
-title('Función y su Derivada','FontSize',12);
-xlabel('x','FontWeight','bold');
-ylabel('Valor de la función','FontWeight','bold');
-legend('show', 'Location', 'northwest');
+% Subplot para la función original
+subplot(2,1,1);
+plot(x, y, 'b', 'LineWidth', 1.5);
+title(['Función: f(x) = ' char(formula(f))]);
+xlabel('x'); ylabel('f(x)');
 grid on;
-axis tight;
 
-% Añadir línea horizontal en y=0 para referencia
-yline(0, 'k:', 'Alpha', 0.3);
+% Subplot para la derivada
+subplot(2,1,2);
+plot(x, dy, 'r', 'LineWidth', 1.5);
+title(['Derivada: f''(x) = ' char(df_sym)]);
+xlabel('x'); ylabel('f''(x)');
+grid on;
 
-hold off;  % Liberar la figura
+% Ajustar espaciado entre subplots
+sgtitle('Análisis de Función y su Derivada', 'FontWeight', 'bold');
