@@ -1,56 +1,60 @@
 % Descripción: Calcula las raíces de una ecuación cuadrática y grafica la función
-% Uso: Ingresar coeficientes a, b, c cuando se solicite. El programa muestra:
-%      1. Discriminante y tipo de raíces
-%      2. Soluciones reales/complejas
-%      3. Gráfico de la función en el dominio [-10, 10]
+% Uso: Ingresar coeficientes a, b, c cuando se solicite
 
-function cuadratica()
-    % Solicitar coeficientes al usuario
-    disp('Resolución de ecuación cuadrática ax² + bx + c = 0');
-    a = input('Ingrese coeficiente a: ');
-    
-    % Validar que sea ecuación cuadrática
-    if a == 0
-        error('El coeficiente a no puede ser cero en una ecuación cuadrática');
-    end
-    
-    b = input('Ingrese coeficiente b: ');
-    c = input('Ingrese coeficiente c: ');
-    
-    % Calcular discriminante
-    discriminante = b^2 - 4*a*c;
-    fprintf('\nDiscriminante: %.2f\n', discriminante);
-    
-    % Determinar tipo de raíces
-    if discriminante > 0
-        disp('Dos raíces reales distintas');
-    elseif discriminante == 0
-        disp('Una raíz real doble');
-    else
-        disp('Dos raíces complejas conjugadas');
-    end
-    
-    % Calcular raíces
-    x1 = (-b + sqrt(complex(discriminante))) / (2*a);
-    x2 = (-b - sqrt(complex(discriminante))) / (2*a);
-    
-    % Mostrar resultados
-    fprintf('x₁ = %s\n', num2str(x1));
-    fprintf('x₂ = %s\n\n', num2str(x2));
-    
-    % Crear gráfico de la función
-    x = linspace(-10, 10, 400);
-    y = a*x.^2 + b*x + c;
-    
-    figure;
-    plot(x, y, 'LineWidth', 2);
-    hold on;
-    plot(real(x1), 0, 'ro', 'MarkerSize', 8); % Marcar raíces
-    plot(real(x2), 0, 'ro', 'MarkerSize', 8);
-    title(['Función cuadrática: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
-    xlabel('x');
-    ylabel('f(x)');
-    grid on;
-    legend('Función', 'Raíces', 'Location', 'best');
-    hold off;
+clc;
+clear;
+
+% Solicitar coeficientes al usuario
+a = input('Ingrese coeficiente a: ');
+b = input('Ingrese coeficiente b: ');
+c = input('Ingrese coeficiente c: ');
+
+% Verificar si es ecuación cuadrática
+if a == 0
+    error('El coeficiente "a" no puede ser cero en una ecuación cuadrática');
 end
+
+% Calcular discriminante
+discriminante = b^2 - 4*a*c;
+
+% Calcular raíces
+if discriminante > 0
+    raiz1 = (-b + sqrt(discriminante))/(2*a);
+    raiz2 = (-b - sqrt(discriminante))/(2*a);
+    fprintf('Dos raíces reales:\n Raíz 1 = %.2f\n Raíz 2 = %.2f\n', raiz1, raiz2);
+elseif discriminante == 0
+    raiz = -b/(2*a);
+    fprintf('Una raíz real doble:\n Raíz = %.2f\n', raiz);
+else
+    realPart = -b/(2*a);
+    imagPart = sqrt(abs(discriminante))/(2*a);
+    fprintf('Dos raíces complejas:\n Raíz 1 = %.2f + %.2fi\n Raíz 2 = %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
+end
+
+% Configurar parámetros para la gráfica
+x_vertice = -b/(2*a);
+x = linspace(x_vertice-5, x_vertice+5, 400);
+y = a*x.^2 + b*x + c;
+
+% Graficar la función
+figure;
+plot(x, y, 'LineWidth', 2);
+hold on;
+grid on;
+title('Gráfico de la Función Cuadrática');
+xlabel('x');
+ylabel('f(x)');
+
+% Marcar vértice
+plot(x_vertice, a*x_vertice^2 + b*x_vertice + c, 'ro', 'MarkerSize', 8);
+text(x_vertice, a*x_vertice^2 + b*x_vertice + c, ' Vértice', 'VerticalAlignment','bottom');
+
+% Marcar raíces reales si existen
+if discriminante >= 0
+    plot(raiz1, 0, 'go', 'MarkerSize', 8);
+    plot(raiz2, 0, 'go', 'MarkerSize', 8);
+    text(raiz1, 0, ' Raíz', 'VerticalAlignment','top');
+    text(raiz2, 0, ' Raíz', 'VerticalAlignment','top');
+end
+
+hold off;

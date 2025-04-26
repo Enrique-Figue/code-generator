@@ -1,45 +1,44 @@
-def calcular(num1, num2, operacion):
-    if operacion == 1:
-        return num1 + num2
-    elif operacion == 2:
-        return num1 - num2
-    elif operacion == 3:
-        return num1 * num2
-    elif operacion == 4:
-        try:
-            return num1 / num2
-        except ZeroDivisionError:
-            return "Error: División por cero"
-    else:
-        return "Operación no válida"
-
-def obtener_numero(mensaje):
-    while True:
-        try:
-            return float(input(mensaje))
-        except ValueError:
-            print("Entrada inválida. Ingrese un número.")
-
-def main():
-    print("Calculadora Básica\nOperaciones disponibles:")
-    print("1: Suma | 2: Resta | 3: Multiplicación | 4: División")
+while True:
+    print("\nCalculadora Básica")
+    print("1. Suma")
+    print("2. Resta")
+    print("3. Multiplicación")
+    print("4. División")
+    print("5. Salir")
     
-    while True:
-        num1 = obtener_numero("\nIngrese el primer número: ")
-        num2 = obtener_numero("Ingrese el segundo número: ")
-        
-        operacion = int(input("Seleccione la operación (1-4): "))
-        resultado = calcular(num1, num2, operacion)
-        
-        if isinstance(resultado, float):
-            print(f"Resultado: {resultado:.2f}" if not resultado.is_integer() else f"Resultado: {int(resultado)}")
+    try:
+        opcion = int(input("Seleccione una operación (1-5): "))
+    except ValueError:
+        print("Error: Ingrese un número válido.")
+        continue
+    
+    if opcion == 5:
+        print("¡Hasta luego!")
+        break
+    
+    if opcion not in (1, 2, 3, 4):
+        print("Opción no válida. Intente de nuevo.")
+        continue
+    
+    try:
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+    except ValueError:
+        print("Error: Ingrese valores numéricos válidos.")
+        continue
+    
+    if opcion == 1:
+        resultado = num1 + num2
+        print(f"Resultado: {num1} + {num2} = {resultado}")
+    elif opcion == 2:
+        resultado = num1 - num2
+        print(f"Resultado: {num1} - {num2} = {resultado}")
+    elif opcion == 3:
+        resultado = num1 * num2
+        print(f"Resultado: {num1} * {num2} = {resultado}")
+    elif opcion == 4:
+        if num2 == 0:
+            print("Error: No se puede dividir entre cero.")
         else:
-            print(resultado)
-        
-        continuar = input("¿Continuar? (s/n): ").lower()
-        if continuar != 's':
-            print("¡Hasta luego!")
-            break
-
-if __name__ == "__main__":
-    main()
+            resultado = num1 / num2
+            print(f"Resultado: {num1} / {num2} = {resultado}")
