@@ -1,18 +1,19 @@
-# 📐 Calculadora de Áreas Geométricas
+# Calculadora de Áreas Geométricas 🌟
 
-¡Bienvenido/a a la **Calculadora de Áreas Geométricas**! Un programa en Python que te permite calcular el área de figuras geométricas de forma rápida y sencilla.
+¡Bienvenido a la **Calculadora de Áreas Geométricas**! Una herramienta intuitiva para calcular áreas de figuras geométricas comunes directamente desde tu terminal.
 
 ## 🚀 Características
-- **Figuras disponibles**:
-  - Círculo
-  - Triángulo
-  - Cuadrado
-  - Rectángulo
-- **Funcionalidades**:
-  - Menú interactivo con opciones numéricas
-  - Validación de entradas numéricas
-  - Cálculos instantáneos
-  - Resultados formateados con 2 decimales
+- Calcula áreas de:
+  - **Círculos** (usando radio)
+  - **Triángulos** (base y altura)
+  - **Rectángulos** (largo y ancho)
+  - **Trapecios** (bases y altura)
+- Interfaz interactiva con menú numérico
+- Validación de entradas numéricas
+- Resultados precisos con decimales
 
-## 📋 Cómo Usar
-1. **Ejecuta el programa**:
+## 📥 Requisitos
+- Python 3.6 o superior
+- Terminal o consola
+
+## 🛠️ Instalación
