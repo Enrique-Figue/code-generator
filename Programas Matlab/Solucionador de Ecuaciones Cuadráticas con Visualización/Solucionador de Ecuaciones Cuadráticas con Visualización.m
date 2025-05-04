@@ -1,52 +1,77 @@
-% Solicitar coeficientes de la ecuación cuadrática ax^2 + bx + c = 0
-a = input('Ingrese el coeficiente a: ');
-b = input('Ingrese el coeficiente b: ');
-c = input('Ingrese el coeficiente c: ');
+% Descripción: Resuelve la ecuación ax² + bx + c = 0 y grafica la función
+% Características:
+%   1. Calcula raíces reales y complejas
+%   2. Verifica casos especiales (ecuación lineal, identidad)
+%   3. Muestra pasos intermedios
+%   4. Genera gráfico de la función en el dominio real
 
-% Verificar si la ecuación es lineal (a=0)
-if a == 0
-    % Manejar caso lineal bx + c = 0
-    if b == 0
-        if c == 0
-            disp('La ecuación es 0 = 0 (infinitas soluciones).');
+function quadratic_solver()
+    % Solicitar coeficientes al usuario
+    disp('Solución de ecuación cuadrática: ax² + bx + c = 0');
+    a = input('Ingrese coeficiente a: ');
+    b = input('Ingrese coeficiente b: ');
+    c = input('Ingrese coeficiente c: ');
+    
+    % Mostrar ecuación ingresada
+    fprintf('\nEcuación a resolver: (%g)x² + (%g)x + (%g) = 0\n', a, b, c);
+    
+    % Caso especial: a = 0 (ecuación lineal)
+    if a == 0
+        disp('Caso especial: Ecuación lineal');
+        if b == 0
+            if c == 0
+                disp('Identidad: 0 = 0 (Todos los x son solución)');
+            else
+                disp('Ecuación imposible: No existe solución');
+            end
         else
-            disp('La ecuación no tiene solución (contradicción).');
+            x = -c/b;
+            fprintf('Solución única: x = %g\n', x);
         end
-    else
-        x = -c / b;
-        fprintf('Solución lineal: x = %.2f\n', x);
-        % Graficar función lineal
-        x_vals = linspace(-10, 10, 100);
-        y_vals = b * x_vals + c;
-        plot(x_vals, y_vals, 'b-', 'LineWidth', 2);
-        title('Gráfico de la función lineal');
-        xlabel('x'); ylabel('y');
-        grid on;
+        return;
     end
-else
-    % Calcular discriminante para ecuación cuadrática
+    
+    % Calcular discriminante
     discriminante = b^2 - 4*a*c;
+    fprintf('Discriminante: %g\n', discriminante);
     
-    % Determinar tipo de raíces
+    % Calcular raíces
     if discriminante > 0
-        raiz1 = (-b + sqrt(discriminante)) / (2*a);
-        raiz2 = (-b - sqrt(discriminante)) / (2*a);
-        fprintf('Dos raíces reales:\n x1 = %.2f\n x2 = %.2f\n', raiz1, raiz2);
+        x1 = (-b + sqrt(discriminante))/(2*a);
+        x2 = (-b - sqrt(discriminante))/(2*a);
+        fprintf('Dos raíces reales:\n x₁ = %g\n x₂ = %g\n', x1, x2);
     elseif discriminante == 0
-        raiz = -b / (2*a);
-        fprintf('Una raíz real doble:\n x = %.2f\n', raiz);
+        x = -b/(2*a);
+        fprintf('Raíz única (doble): x = %g\n', x);
     else
-        realPart = -b / (2*a);
-        imagPart = sqrt(-discriminante) / (2*a);
-        fprintf('Raíces complejas:\n x1 = %.2f + %.2fi\n x2 = %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
+        real_part = -b/(2*a);
+        imag_part = sqrt(-discriminante)/(2*a);
+        fprintf('Raíces complejas conjugadas:\n x₁ = %g + %gi\n x₂ = %g - %gi\n',...
+                real_part, imag_part, real_part, imag_part);
     end
     
-    % Graficar función cuadrática
-    x_vertice = -b/(2*a);
-    x_vals = linspace(x_vertice - 5, x_vertice + 5, 100);
+    % Graficar función
+    x_vals = linspace(-10, 10, 400);
     y_vals = a*x_vals.^2 + b*x_vals + c;
-    plot(x_vals, y_vals, 'r-', 'LineWidth', 2);
-    title('Gráfico de la función cuadrática');
-    xlabel('x'); ylabel('y');
+    
+    figure;
+    plot(x_vals, y_vals, 'b', 'LineWidth', 2);
+    hold on;
+    title(sprintf('Gráfico de f(x) = %gx² + %gx + %g', a, b, c));
+    xlabel('x');
+    ylabel('f(x)');
     grid on;
+    ax = gca;
+    ax.XAxisLocation = 'origin';
+    ax.YAxisLocation = 'origin';
+    
+    % Marcar raíces reales
+    if discriminante >= 0 && a ~= 0
+        if discriminante > 0
+            plot([x1, x2], [0, 0], 'ro', 'MarkerSize', 8);
+        else
+            plot(x, 0, 'ro', 'MarkerSize', 8);
+        end
+    end
+    legend('Función', 'Raíces', 'Location', 'best');
 end
