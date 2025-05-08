@@ -1,26 +1,22 @@
 # 🧮 Calculadora de Interés Simple
 
-¡Bienvenido a la **Calculadora de Interés Simple**! Este programa en Python te permite calcular el interés simple y el monto total de una inversión o préstamo de forma rápida y sencilla.
+¡Bienvenido a la **Calculadora de Interés Simple**! Este programa en Python te permite calcular rápidamente el interés generado por un capital inicial, una tasa de interés y un período de tiempo determinado. Ideal para finanzas personales o proyectos educativos.
 
 ## 🌟 Características
-- **Cálculo preciso**: Obtén el interés generado y el monto total.
-- **Interfaz intuitiva**: Ingresa los valores paso a paso.
 - **Fórmula aplicada**: 
-  \[
-  \text{Interés Simple} = P \times R \times T
-  \]
-  \[
-  \text{Monto Total} = P + \text{Interés}
-  \]
+  \[ I = P \times r \times t \]
   Donde:
-  - \( P \) = Principal (monto inicial)
-  - \( R \) = Tasa de interés anual (en decimal)
-  - \( T \) = Tiempo en años
+  - \( I \): Interés generado.
+  - \( P \): Capital inicial (monto principal).
+  - \( r \): Tasa de interés anual (en decimal).
+  - \( t \): Tiempo en años.
 
-## 📋 Requisitos
-- Python 3.x instalado.
-- Conocimiento básico de la terminal o consola.
+- **Resultados detallados**: Muestra el interés total y el monto final (capital + interés).
+- **Validación de datos**: Asegura que las entradas sean numéricas y válidas.
 
-## 🚀 Cómo usar
-1. **Clona o descarga** el repositorio.
-2. **Ejecuta el programa** desde tu terminal:
+## 📥 Requisitos
+- Python 3.6 o superior.
+- Biblioteca `colorama` instalada (para diseño en consola).
+
+## 🚀 Cómo Usar
+1. **Clona el repositorio**:
