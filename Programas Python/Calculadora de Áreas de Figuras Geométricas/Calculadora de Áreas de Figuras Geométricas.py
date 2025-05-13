@@ -1,47 +1,33 @@
-import math
-
-while True:
-    print("\n--- Calculadora de Áreas ---")
+def calcular_area():
+    print("Calculadora de Áreas")
     print("1. Círculo")
     print("2. Triángulo")
     print("3. Cuadrado")
     print("4. Rectángulo")
-    print("5. Salir")
     
-    opcion = input("Selecciona una figura (1-5): ")
+    while True:
+        try:
+            opcion = int(input("\nSeleccione figura (1-4): "))
+            if 1 <= opcion <= 4:
+                break
+            print("Error: Ingrese un número entre 1 y 4")
+        except ValueError:
+            print("Error: Ingrese un número válido")
     
-    if opcion == '5':
-        print("¡Hasta luego!")
-        break
-    
-    if opcion not in ['1', '2', '3', '4']:
-        print("Opción inválida. Intenta de nuevo.")
-        continue
-    
-    try:
-        if opcion == '1':
-            radio = float(input("Radio del círculo: "))
-            if radio <= 0:
-                raise ValueError
-            area = math.pi * radio ** 2
-        elif opcion == '2':
-            base = float(input("Base del triángulo: "))
-            altura = float(input("Altura del triángulo: "))
-            if base <= 0 or altura <= 0:
-                raise ValueError
-            area = 0.5 * base * altura
-        elif opcion == '3':
-            lado = float(input("Lado del cuadrado: "))
-            if lado <= 0:
-                raise ValueError
-            area = lado ** 2
-        elif opcion == '4':
-            largo = float(input("Largo del rectángulo: "))
-            ancho = float(input("Ancho del rectángulo: "))
-            if largo <= 0 or ancho <= 0:
-                raise ValueError
-            area = largo * ancho
-        
-        print(f"Área calculada: {area:.2f}")
-    except ValueError:
-        print("Error: Ingresa valores numéricos positivos.")
+    if opcion == 1:
+        radio = float(input("Radio del círculo: "))
+        print(f"Área: {3.1416 * radio**2:.2f}")
+    elif opcion == 2:
+        base = float(input("Base del triángulo: "))
+        altura = float(input("Altura del triángulo: "))
+        print(f"Área: {(base * altura)/2:.2f}")
+    elif opcion == 3:
+        lado = float(input("Lado del cuadrado: "))
+        print(f"Área: {lado**2:.2f}")
+    elif opcion == 4:
+        largo = float(input("Largo del rectángulo: "))
+        ancho = float(input("Ancho del rectángulo: "))
+        print(f"Área: {largo * ancho:.2f}")
+
+if __name__ == "__main__":
+    calcular_area()
