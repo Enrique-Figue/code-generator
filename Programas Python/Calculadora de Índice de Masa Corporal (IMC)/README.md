@@ -1,12 +1,12 @@
-# 🏋️ BMI Calculator - Índice de Masa Corporal
+# 🏋️ Calculadora de Índice de Masa Corporal (IMC) 📊
 
-¡Calcula tu IMC de forma rápida y visual! Este programa determina tu categoría de peso según el Índice de Masa Corporal (IMC) usando **Python**.
+¡Bienvenido/a a la **Calculadora de IMC**! Un programa simple en Python que te ayuda a determinar tu Índice de Masa Corporal y clasificar tu estado de salud según los estándares de la OMS.
 
 ## 🚀 Características
-- Calcula el IMC basado en altura y peso.
-- Clasifica el resultado en: bajo peso, normal, sobrepeso u obesidad.
-- Interfaz sencilla con mensajes descriptivos.
+- ✔️ Calcula el IMC automáticamente con peso y altura.
+- ✔️ Clasifica el resultado en categorías (bajo peso, normal, sobrepeso, etc.).
+- ✔️ Interfaz fácil de usar con instrucciones paso a paso.
+- ✔️ Muestra resultados con colores y formato claro.
 
-## 📖 Cómo Usar
-1. **Requisitos**: Asegúrate de tener Python instalado (versión 3.x recomendada).
-2. **Ejecutar el programa**:
+## 📌 Cómo usar
+1. **Ejecuta el programa** en tu terminal:
