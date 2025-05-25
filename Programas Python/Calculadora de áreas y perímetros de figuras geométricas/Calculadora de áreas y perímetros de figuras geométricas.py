@@ -1,43 +1,49 @@
 import math
 
+def calcular_area_perimetro_circulo(radio):
+    area = math.pi * radio ** 2
+    perimetro = 2 * math.pi * radio
+    return area, perimetro
+
+def calcular_area_perimetro_cuadrado(lado):
+    area = lado ** 2
+    perimetro = 4 * lado
+    return area, perimetro
+
+def calcular_area_perimetro_rectangulo(base, altura):
+    area = base * altura
+    perimetro = 2 * (base + altura)
+    return area, perimetro
+
 def main():
     while True:
-        print("\nCalculadora de Áreas y Perímetros")
-        print("1. Círculo")
-        print("2. Triángulo equilátero")
-        print("3. Cuadrado")
-        print("4. Salir")
+        print("\nCalculadora Geométrica")
+        print("1. Círculo\n2. Cuadrado\n3. Rectángulo\n4. Salir")
+        opcion = int(input("Seleccione una figura (1-4): "))
         
-        opcion = input("Seleccione una figura (1-4): ").strip()
-        
-        if opcion == "4":
+        if opcion == 1:
+            radio = float(input("Radio del círculo: "))
+            area, perimetro = calcular_area_perimetro_circulo(radio)
+            print(f"Área: {area:.2f}, Circunferencia: {perimetro:.2f}")
+        elif opcion == 2:
+            lado = float(input("Lado del cuadrado: "))
+            area, perimetro = calcular_area_perimetro_cuadrado(lado)
+            print(f"Área: {area:.2f}, Perímetro: {perimetro:.2f}")
+        elif opcion == 3:
+            base = float(input("Base del rectángulo: "))
+            altura = float(input("Altura del rectángulo: "))
+            area, perimetro = calcular_area_perimetro_rectangulo(base, altura)
+            print(f"Área: {area:.2f}, Perímetro: {perimetro:.2f}")
+        elif opcion == 4:
             print("¡Hasta luego!")
             break
+        else:
+            print("Opción inválida. Intente de nuevo.")
         
-        try:
-            if opcion == "1":
-                radio = float(input("Radio del círculo: "))
-                area = math.pi * (radio ** 2)
-                perimetro = 2 * math.pi * radio
-                print(f"Área: {area:.2f}, Perímetro: {perimetro:.2f}")
-                
-            elif opcion == "2":
-                lado = float(input("Lado del triángulo: "))
-                area = (math.sqrt(3)/4) * (lado ** 2)
-                perimetro = 3 * lado
-                print(f"Área: {area:.2f}, Perímetro: {perimetro:.2f}")
-                
-            elif opcion == "3":
-                lado = float(input("Lado del cuadrado: "))
-                area = lado ** 2
-                perimetro = 4 * lado
-                print(f"Área: {area:.2f}, Perímetro: {perimetro:.2f}")
-                
-            else:
-                print("Opción no válida. Intente nuevamente.")
-        
-        except ValueError:
-            print("Error: Ingrese un valor numérico válido.")
+        continuar = input("¿Realizar otro cálculo? (s/n): ").lower()
+        if continuar != 's':
+            print("Programa finalizado.")
+            break
 
 if __name__ == "__main__":
     main()
