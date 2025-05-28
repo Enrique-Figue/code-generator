@@ -1,22 +1,17 @@
-# 📊 Calculadora de Estadísticas Básicas
+# Calculadora de Estadísticas Básicas 📈
 
-¡Bienvenido/a a la **Calculadora de Estadísticas Básicas**! Un programa en Python que realiza cálculos estadísticos esenciales de forma rápida y sencilla.
+¡Una herramienta intuitiva para calcular estadísticas básicas de un conjunto de datos numéricos!
 
----
+## Funcionalidades Principales 🚀
+- **Media**: Calcula el promedio de los números.
+- **Mediana**: Determina el valor central del conjunto.
+- **Moda**: Identifica el número más frecuente.
+- **Rango**: Calcula la diferencia entre el máximo y mínimo.
+- **Desviación Estándar**: Mide la dispersión de los datos.
 
-## 🚀 Características
-- Calcula las siguientes métricas:
-  - Media aritmética
-  - Mediana
-  - Moda
-  - Varianza
-  - Desviación estándar
-- Soporta listas numéricas de cualquier tamaño
-- Interfaz intuitiva en la terminal
+## Requisitos 📋
+- Python 3.6 o superior.
+- Biblioteca `statistics` (incluida en Python).
 
-## 📦 Requisitos
-- Python 3.8 o superior
-- Biblioteca `statistics` (incluida en la instalación estándar de Python)
-
-## 🔧 Instalación
-1. Clona el repositorio:
+## Instrucciones de Uso 🛠️
+1. **Ejecuta el programa**:
