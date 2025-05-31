@@ -1,66 +1,72 @@
-% Descripción: Este programa solicita coeficientes de una función cuadrática,
-% calcula sus raíces, vértice y grafica la parábola resultante.
+% Descripción: Este programa calcula y grafica una función cuadrática, mostrando sus características principales.
 
 clc; clear; close all;
 
-% Solicitar coeficientes con validación para 'a'
-a = 0;
-while a == 0
-    a = input('Ingrese el coeficiente cuadrático (a ≠ 0): ');
-    if a == 0
-        disp('Error: El coeficiente "a" no puede ser cero. Intente nuevamente.');
-    end
-end
+% Solicitar coeficientes al usuario
+a = input('Ingrese el coeficiente cuadrático (a): ');
 b = input('Ingrese el coeficiente lineal (b): ');
 c = input('Ingrese el término independiente (c): ');
 
 % Calcular discriminante
 discriminante = b^2 - 4*a*c;
 
-% Calcular raíces
+% Calcular raíces usando fórmula cuadrática
 if discriminante >= 0
-    x1 = (-b + sqrt(discriminante))/(2*a);
-    x2 = (-b - sqrt(discriminante))/(2*a);
-    raices = [x1, x2];
+    raiz1 = (-b + sqrt(discriminante)) / (2*a);
+    raiz2 = (-b - sqrt(discriminante)) / (2*a);
 else
-    realPart = -b/(2*a);
-    imagPart = sqrt(abs(discriminante))/(2*a);
-    raices = [realPart + imagPart*1i, realPart - imagPart*1i];
+    parte_real = -b/(2*a);
+    parte_imag = sqrt(-discriminante)/(2*a);
+    raiz1 = complex(parte_real, parte_imag);
+    raiz2 = complex(parte_real, -parte_imag);
 end
 
-% Calcular vértice
-verticeX = -b/(2*a);
-verticeY = a*verticeX^2 + b*verticeX + c;
+% Calcular vértice de la parábola
+x_vertice = -b/(2*a);
+y_vertice = a*x_vertice^2 + b*x_vertice + c;
 
-% Generar puntos para la gráfica
-x = linspace(verticeX-5, verticeX+5, 400);
+% Determinar rango de visualización
+if discriminante >= 0 && isreal(raiz1)
+    x = linspace(min(raiz1, raiz2)-2, max(raiz1, raiz2)+2, 400);
+else
+    x = linspace(x_vertice-5, x_vertice+5, 400);
+end
+
+% Evaluar función cuadrática
 y = a*x.^2 + b*x + c;
 
-% Configurar gráfica
-figure('Color','white');
-plot(x, y, 'LineWidth', 2, 'Color', [0.2 0.6 0.8]);
+% Graficar la función
+figure;
+plot(x, y, 'b', 'LineWidth', 2);
 hold on;
-grid on;
-xlabel('x');
-ylabel('f(x)');
+plot(x_vertice, y_vertice, 'ro', 'MarkerSize', 8);
 title(['Función cuadrática: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
-
-% Marcar vértice
-scatter(verticeX, verticeY, 100, 'r', 'filled', 'MarkerEdgeColor','k');
-text(verticeX, verticeY, sprintf(' Vértice\n (%.2f, %.2f)', verticeX, verticeY),...
-    'VerticalAlignment','bottom', 'FontWeight','bold');
-
-% Marcar raíces reales si existen
-if isreal(raices)
-    scatter(raices, zeros(1,2), 100, [0.9 0.4 0.1], 'filled', 'MarkerEdgeColor','k');
-    text(raices(1), 0, sprintf(' Raíz 1\n %.2f', raices(1)),...
-        'HorizontalAlignment','center', 'VerticalAlignment','top');
-    text(raices(2), 0, sprintf(' Raíz 2\n %.2f', raices(2)),...
-        'HorizontalAlignment','center', 'VerticalAlignment','top');
-end
+xlabel('Eje X');
+ylabel('Eje Y');
+grid on;
+legend('Función cuadrática', 'Vértice', 'Location', 'best');
 
 % Mostrar información en consola
-fprintf('\nAnálisis de la función:\n');
-fprintf('Raíces: %s\n', mat2str(raices,3));
-fprintf('Vértice en (%.2f, %.2f)\n', verticeX, verticeY);
-fprintf('La parábola abre hacia %s\n', string(a>0).replace({'1','0'},{'arriba','abajo'}));
+fprintf('\nCaracterísticas de la función:\n');
+fprintf('1. Vértice en (%0.2f, %0.2f)\n', x_vertice, y_vertice);
+fprintf('2. Dirección de apertura: %s\n', ...
+    ternary(a > 0, 'Hacia arriba (cóncava)', 'Hacia abajo (convexa)'));
+fprintf('3. Raíces:\n   - Raíz 1: %s\n   - Raíz 2: %s\n', ...
+    formatComplex(raiz1), formatComplex(raiz2));
+
+% Funciones auxiliares
+function str = formatComplex(num)
+    if imag(num) == 0
+        str = sprintf('%.2f', real(num));
+    else
+        str = sprintf('%.2f %+.2fi', real(num), imag(num));
+    end
+end
+
+function result = ternary(condition, trueVal, falseVal)
+    if condition
+        result = trueVal;
+    else
+        result = falseVal;
+    end
+end

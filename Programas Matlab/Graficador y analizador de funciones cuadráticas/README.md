@@ -1,21 +1,18 @@
-# 📊 Graficador y Analizador de Funciones Cuadráticas en MATLAB
+# 📈 Graficador y Analizador de Funciones Cuadráticas en MATLAB
 
-¡Bienvenido al programa que te permite graficar y analizar funciones cuadráticas de forma intuitiva! 
+¡Bienvenido al programa que te ayuda a **graficar y analizar funciones cuadráticas** de forma intuitiva! 🚀
 
-## 🚀 Funcionalidades Principales
-- **Graficación interactiva** de funciones de la forma \( f(x) = ax^2 + bx + c \).
-- **Análisis detallado** que incluye:
-  - Coordenadas del **vértice**.
-  - Raíces reales o complejas.
-  - Discriminante y tipo de solución.
-  - Dirección de la concavidad.
-- Generación de una **tabla de valores** para \( x \) y \( f(x) \).
-- Interfaz amigable mediante `input` para ingresar coeficientes.
+## 📖 Descripción
+Este programa permite ingresar los coeficientes de una función cuadrática (`a`, `b`, `c`) y genera:
+- **Gráficos interactivos** de la parábola.
+- **Análisis detallado** del vértice, raíces, dirección y más.
 
-## 📥 Requisitos
-- MATLAB R2018b o superior.
-- Toolbox **Symbolic Math** (para cálculos simbólicos).
+## 🎯 Características Principales
+✅ **Cálculo del vértice** de la parábola.  
+✅ **Determinación del discriminante** y tipo de raíces.  
+✅ **Gráfico personalizable** con líneas de ejes y puntos clave.  
+✅ **Ecuación de la función** en formato LaTeX para visualización clara.
 
-## 🛠️ Cómo Usar
-1. **Ejecuta el script** `QuadraticAnalyzer.m` en MATLAB.
-2. Ingresa los coeficientes cuando se te solicite:
+## 🛠️ Instrucciones de Uso
+1. **Ejecuta el programa** en MATLAB.
+2. **Ingresa los coeficientes** cuando se solicite:
