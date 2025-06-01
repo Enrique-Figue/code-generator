@@ -1,15 +1,20 @@
-# Solicitar datos al usuario
-capital_inicial = float(input("Ingrese el capital inicial: "))
-tasa_anual = float(input("Ingrese la tasa de interés anual (%): ")) / 100
-periodos_anual = int(input("Ingrese número de periodos de capitalización por año: "))
-anios = int(input("Ingrese años de inversión: "))
+def calcular_interes_compuesto():
+    # Solicitar datos al usuario
+    principal = float(input("Ingrese el capital inicial (P): "))
+    tasa_anual = float(input("Ingrese la tasa de interés anual (r%): ")) / 100
+    años = int(input("Ingrese el número de años (t): "))
+    frecuencia = int(input("Capitalización por año (n): "))
 
-# Calcular y mostrar crecimiento anual
-print("\nProyección de crecimiento compuesto:")
-for año in range(1, anios + 1):
-    monto = capital_inicial * (1 + tasa_anual / periodos_anual) ** (periodos_anual * año)
-    print(f"Año {año}: ${monto:.2f}")
+    # Calcular interés compuesto
+    monto = principal * (1 + tasa_anual / frecuencia) ** (frecuencia * años)
+    interes = monto - principal
 
-# Mostrar resultado final
-total = capital_inicial * (1 + tasa_anual / periodos_anual) ** (periodos_anual * anios)
-print(f"\nMonto final después de {anios} años: ${total:.2f}")
+    # Mostrar resultados
+    print(f"\nMonto final después de {años} años: ${monto:.2f}")
+    print(f"Interés ganado: ${interes:.2f}")
+
+if __name__ == "__main__":
+    try:
+        calcular_interes_compuesto()
+    except ValueError:
+        print("Error: Ingrese valores numéricos válidos")

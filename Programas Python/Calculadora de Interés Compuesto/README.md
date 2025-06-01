@@ -1,6 +1,12 @@
-# 🧮 Calculadora de Interés Compuesto en Python
+# Calculadora de Interés Compuesto 💰
 
-¡Bienvenido/a a la **Calculadora de Interés Compuesto**! Este programa te permite calcular el crecimiento de tu inversión de forma rápida y precisa.
+¡Calcula el crecimiento de tus inversiones de forma sencilla! Este programa determina el monto futuro usando la fórmula de interés compuesto y muestra una tabla de proyección anual.
 
-## 🚀 ¿Qué hace este programa?
-Calcula el monto final de una inversión utilizando la fórmula del interés compuesto:
+## 🚀 Características
+- ✅ Cálculo preciso del monto final con interés compuesto
+- 📊 Generación automática de tabla de crecimiento anual
+- ⚙️ Configuración personalizada de periodos de capitalización
+- 🎨 Interfaz intuitiva con mensajes descriptivos
+
+## 📦 Cómo usar
+1. **Ejecutar el programa**:
