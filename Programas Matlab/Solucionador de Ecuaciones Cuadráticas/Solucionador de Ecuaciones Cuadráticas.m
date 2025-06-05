@@ -1,33 +1,55 @@
-% Descripción: Resuelve una ecuación cuadrática ax² + bx + c = 0 y muestra solución y gráfica.
-a = input('Ingrese coeficiente a: ');
-b = input('Ingrese coeficiente b: ');
-c = input('Ingrese coeficiente c: ');
+% Descripción: Resuelve ecuaciones de segundo grado de la forma ax² + bx + c = 0
+%   y muestra información educativa sobre el proceso de solución y discriminante
 
-% Cálculo del discriminante
+% Limpiar espacio de trabajo
+clc;
+clear;
+
+% Solicitar coeficientes al usuario
+a = input('Ingrese el coeficiente a (diferente de 0): ');
+b = input('Ingrese el coeficiente b: ');
+c = input('Ingrese el coeficiente c: ');
+
+% Calcular discriminante
 discriminante = b^2 - 4*a*c;
 
-% Solución analítica
+% Mostrar información del discriminante
+fprintf('\nDiscriminante D = b² - 4ac = %.2f\n', discriminante);
+
+% Determinar naturaleza de las raíces
 if discriminante > 0
-    x1 = (-b + sqrt(discriminante))/(2*a);
-    x2 = (-b - sqrt(discriminante))/(2*a);
-    fprintf('Dos soluciones reales:\nx₁ = %.2f\nx₂ = %.2f\n',x1,x2);
+    fprintf('D > 0: Dos raíces reales distintas\n');
 elseif discriminante == 0
-    x = -b/(2*a);
-    fprintf('Solución única real:\nx = %.2f\n',x);
+    fprintf('D = 0: Una raíz real doble\n');
 else
-    realPart = -b/(2*a);
-    imagPart = sqrt(abs(discriminante))/(2*a);
-    fprintf('Raíces complejas:\nx₁ = %.2f + %.2fi\nx₂ = %.2f - %.2fi\n',realPart,imagPart,realPart,imagPart);
+    fprintf('D < 0: Dos raíces complejas conjugadas\n');
 end
 
-% Gráfica de la función
-x = linspace(-10,10,400);
-y = a*x.^2 + b*x + c;
-figure;
-plot(x,y,'LineWidth',2);
-grid on;
-xlabel('x');
-ylabel('f(x)');
-title('Gráfica de la Ecuación Cuadrática');
-hold on;
-plot(x,zeros(size(x)),'k--');
+% Calcular y mostrar soluciones
+if a == 0
+    error('El coeficiente a debe ser diferente de cero para una ecuación cuadrática');
+else
+    parte_real = -b/(2*a);
+    parte_imaginaria = sqrt(abs(discriminante))/(2*a);
+    
+    if discriminante >= 0
+        x1 = parte_real + parte_imaginaria;
+        x2 = parte_real - parte_imaginaria;
+        fprintf('\nSoluciones:\n');
+        fprintf('x₁ = %.4f\nx₂ = %.4f\n', x1, x2);
+    else
+        fprintf('\nSoluciones complejas:\n');
+        fprintf('x₁ = %.4f + %.4fi\n', parte_real, parte_imaginaria);
+        fprintf('x₂ = %.4f - %.4fi\n', parte_real, parte_imaginaria);
+    end
+end
+
+% Mostrar forma factorizada (si es aplicable)
+if discriminante >= 0 && a == 1
+    fprintf('\nForma factorizada:\n');
+    if discriminante == 0
+        fprintf('(x %+.2f)²\n', -x1);
+    else
+        fprintf('(x %+.2f)(x %+.2f)\n', -x1, -x2);
+    end
+end
