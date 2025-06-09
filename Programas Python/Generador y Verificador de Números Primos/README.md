@@ -1,17 +1,16 @@
-#  Generador y Verificador de Números Primos
+# 🔢 Generador y Verificador de Números Primos [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-yellowgreen)](https://www.python.org/)
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-green)
-![Estado](https://img.shields.io/badge/Estado-Activo-brightgreen)
+Programa en Python para generar números primos en un rango específico y verificar si un número es primo. Incluye funciones intuitivas y manejo de errores.
 
-Un programa en Python que **genera números primos** y **verifica la primalidad** de cualquier número, con salida formateada y opciones personalizables.
+## 🚀 Características
+- ✔️ Genera números primos dentro de un rango personalizado
+- ✔️ Verificación rápida de primalidad con algoritmo optimizado
+- ✔️ Interfaz limpia con mensajes descriptivos
+- ✔️ Validación de entradas inválidas
+- ✔️ Exportación de resultados a consola
 
-##  Características
-- ✔️ Verificación rápida de números primos
-- 🌈 Generación de secuencias primas en rangos
-- ️ Configuración de formato de salida (lista o tabla)
--  Estadísticas básicas de generación
--  Exportación de resultados a archivo .txt
+## 📋 Requisitos
+- Python 3.8 o superior
+- Módulo `colorama` (para formato de colores)
 
-##  Instalación
-1. Clona el repositorio:
+## ⚙️ Instalación
