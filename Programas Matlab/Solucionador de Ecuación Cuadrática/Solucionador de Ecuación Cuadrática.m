@@ -1,31 +1,31 @@
-disp('Bienvenido al Solucionador de Ecuaciones Cuadráticas.');
-disp('Este programa resuelve ecuaciones de la forma ax² + bx + c = 0.');
+% Descripción: Calcula las raíces de una ecuación cuadrática ax² + bx + c = 0
+% y muestra los resultados de forma clara, incluyendo casos reales y complejos.
 
-% Solicitar coeficientes
-a = input('Ingrese el coeficiente a: ');
-if a == 0
-    error('El coeficiente a no puede ser cero. No es una ecuación cuadrática.');
-end
-b = input('Ingrese el coeficiente b: ');
-c = input('Ingrese el coeficiente c: ');
+% Solicitar coeficientes al usuario
+a = input('Ingrese el coeficiente cuadrático (a): ');
+b = input('Ingrese el coeficiente lineal (b): ');
+c = input('Ingrese el término constante (c): ');
 
 % Calcular discriminante
-D = b^2 - 4*a*c;
+discriminante = b^2 - 4*a*c;
 
-% Determinar tipo de raíces y mostrar resultados
-if D > 0
-    disp('La ecuación tiene dos raíces reales distintas:');
-    x1 = (-b + sqrt(D)) / (2*a);
-    x2 = (-b - sqrt(D)) / (2*a);
-    fprintf('x1 = %.4f\nx2 = %.4f\n', x1, x2);
-elseif D == 0
-    disp('La ecuación tiene una raíz real repetida:');
+% Determinar las raíces según el discriminante
+if discriminante > 0
+    % Dos raíces reales distintas
+    x1 = (-b + sqrt(discriminante)) / (2*a);
+    x2 = (-b - sqrt(discriminante)) / (2*a);
+    fprintf('Dos raíces reales distintas:\n');
+    fprintf('x1 = %.2f\nx2 = %.2f\n', x1, x2);
+elseif discriminante == 0
+    % Raíz real única (repetida)
     x = -b / (2*a);
-    fprintf('x = %.4f\n', x);
+    fprintf('Una raíz real repetida:\n');
+    fprintf('x = %.2f\n', x);
 else
-    disp('La ecuación tiene dos raíces complejas conjugadas:');
+    % Raíces complejas conjugadas
     parte_real = -b / (2*a);
-    parte_imaginaria = sqrt(abs(D)) / (2*a);
-    fprintf('x1 = %.4f + %.4fi\nx2 = %.4f - %.4fi\n',...
-            parte_real, parte_imaginaria, parte_real, parte_imaginaria);
+    parte_imaginaria = sqrt(-discriminante) / (2*a);
+    fprintf('Dos raíces complejas conjugadas:\n');
+    fprintf('x1 = %.2f + %.2fi\n', parte_real, parte_imaginaria);
+    fprintf('x2 = %.2f - %.2fi\n', parte_real, parte_imaginaria);
 end
