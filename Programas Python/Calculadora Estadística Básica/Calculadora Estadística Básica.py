@@ -1,19 +1,28 @@
 import statistics
 
 try:
-    datos = input("Ingrese números separados por comas: ")
-    lista = [float(x) for x in datos.split(',')]
+    entrada = input("Ingrese números separados por coma: ")
+    numeros = [float(num) for num in entrada.split(',')]
     
-    media = statistics.mean(lista)
-    mediana = statistics.median(lista)
-    moda = statistics.mode(lista)
-    desviacion = statistics.stdev(lista)
+    promedio = sum(numeros) / len(numeros)
+    maximo = max(numeros)
+    minimo = min(numeros)
+    mediana = statistics.median(numeros)
+    
+    try:
+        moda = statistics.mode(numeros)
+        moda_msg = f"Moda: {moda}"
+    except statistics.StatisticsError:
+        moda_msg = "Moda: No hay moda única"
     
     print(f"\nResultados:")
-    print(f"Media: {media:.2f}")
+    print(f"Promedio: {promedio:.2f}")
+    print(f"Máximo: {maximo:.2f}")
+    print(f"Mínimo: {minimo:.2f}")
     print(f"Mediana: {mediana:.2f}")
-    print(f"Moda: {moda:.2f}")
-    print(f"Desviación estándar: {desviacion:.2f}")
+    print(moda_msg)
 
 except ValueError:
-    print("Error: Ingrese números válidos separados por comas (ej. 5,2.7,8)")
+    print("Error: Asegúrese de ingresar solo números separados por comas.")
+except ZeroDivisionError:
+    print("Error: No se ingresaron números válidos.")
