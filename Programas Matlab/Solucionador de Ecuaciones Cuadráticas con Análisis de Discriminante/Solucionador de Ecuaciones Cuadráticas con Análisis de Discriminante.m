@@ -1,39 +1,51 @@
-% Descripción: Calcula las raíces de una ecuación cuadrática ax² + bx + c = 0,
-% incluyendo análisis del discriminante y resultados en forma compleja donde sea necesario.
+% Descripción: Calcula las raíces de una ecuación cuadrática y clasifica su naturaleza
+% según el discriminante, mostrando explicaciones educativas paso a paso
 
-% Solicitar coeficientes al usuario
+clc;
+disp('Calculadora de ecuaciones cuadráticas: ax² + bx + c = 0');
+
 a = input('Ingrese el coeficiente a: ');
-if a == 0
-    error('El coeficiente "a" no puede ser cero en una ecuación cuadrática')
-end
 b = input('Ingrese el coeficiente b: ');
 c = input('Ingrese el coeficiente c: ');
 
-% Calcular discriminante
-discriminante = b^2 - 4*a*c;
-
-% Mostrar información educativa
-fprintf('\nEcuación: %.2fx² + %.2fx + %.2f = 0\n', a, b, c);
-fprintf('Discriminante = %.2f^2 - 4*%.2f*%.2f = %.2f\n', b, a, c, discriminante);
-
-% Determinar tipo de raíces y calcular
-if discriminante > 0
-    fprintf('Dos raíces reales distintas\n');
-    x1 = (-b + sqrt(discriminante))/(2*a);
-    x2 = (-b - sqrt(discriminante))/(2*a);
-elseif discriminante == 0
-    fprintf('Una raíz real doble\n');
-    x1 = -b/(2*a);
-    x2 = x1;
-else
-    fprintf('Dos raíces complejas conjugadas\n');
-    realPart = -b/(2*a);
-    imagPart = sqrt(-discriminante)/(2*a);
-    x1 = complex(realPart, imagPart);
-    x2 = complex(realPart, -imagPart);
+% Verificar que sea ecuación cuadrática
+if a == 0
+    error('No es ecuación cuadrática (a no puede ser cero)');
 end
 
-% Mostrar resultados
-fprintf('\nSoluciones:\n');
-fprintf('x1 = %s\n', num2str(x1, '%.4f'));
-fprintf('x2 = %s\n\n', num2str(x2, '%.4f'));
+disp(newline);
+disp(['Ecuación ingresada: ', num2str(a), 'x² + ', num2str(b), 'x + ', num2str(c), ' = 0']);
+
+% Calcular discriminante
+discriminante = b^2 - 4*a*c;
+disp(['-> Discriminante D = b² - 4ac = ', num2str(discriminante)]);
+
+% Analizar naturaleza de las raíces
+if discriminante > 0
+    disp('D > 0: Dos raíces reales diferentes');
+elseif discriminante == 0
+    disp('D = 0: Una raíz real doble');
+else
+    disp('D < 0: Dos raíces complejas conjugadas');
+end
+
+% Calcular soluciones
+x1 = (-b + sqrt(discriminante)) / (2*a);
+x2 = (-b - sqrt(discriminante)) / (2*a);
+
+% Mostrar resultados con formato
+disp(newline);
+disp('Soluciones:');
+if discriminante >= 0
+    fprintf('x₁ = %.4f\nx₂ = %.4f\n', x1, x2);
+else
+    % Formatear parte real e imaginaria para complejos
+    fprintf('x₁ = %.4f + %.4fi\nx₂ = %.4f - %.4fi\n', real(x1), imag(x1), real(x2), imag(x2));
+end
+
+disp(newline);
+disp('Proceso completo:');
+disp('1. Se verificó que la ecuación sea cuadrática');
+disp('2. Se calculó el discriminante D = b² - 4ac');
+disp('3. Se analizó la naturaleza de las raíces según D');
+disp('4. Se aplicó la fórmula cuadrática para encontrar las soluciones');
