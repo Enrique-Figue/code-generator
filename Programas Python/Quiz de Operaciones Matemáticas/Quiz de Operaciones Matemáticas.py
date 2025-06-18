@@ -1,43 +1,30 @@
 import random
 
-def generar_pregunta():
-    operaciones = ['+', '-', '*', '/']
-    op = random.choice(operaciones)
-    if op == '+':
-        num1 = random.randint(1, 20)
-        num2 = random.randint(1, 20)
-        resultado = num1 + num2
-    elif op == '-':
-        num1 = random.randint(1, 20)
-        num2 = random.randint(1, 20)
-        if num2 > num1:
-            num1, num2 = num2, num1
-        resultado = num1 - num2
-    elif op == '*':
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        resultado = num1 * num2
-    else:
-        num2 = random.randint(1, 10)
-        resultado = random.randint(1, 10)
-        num1 = num2 * resultado
-    return num1, op, num2, resultado
-
-print("Bienvenido al quiz de matemáticas. Responde 5 preguntas.")
 puntaje = 0
+total_preguntas = 5
 
-for _ in range(5):
-    num1, op, num2, correcto = generar_pregunta()
-    pregunta = f"¿Cuánto es {num1} {op} {num2}? "
+print("Resuelve las siguientes operaciones:")
+for _ in range(total_preguntas):
+    a = random.randint(1, 20)
+    b = random.randint(1, 20)
+    operacion = random.choice(['+', '-', '*'])
+    
+    if operacion == '+':
+        resultado = a + b
+    elif operacion == '-':
+        resultado = a - b
+    else:
+        resultado = a * b
+    
     try:
-        respuesta = int(input(pregunta))
+        respuesta = int(input(f"\n{a} {operacion} {b} = "))
     except ValueError:
         respuesta = None
-        print("Por favor ingresa un número entero.")
-    if respuesta == correcto:
+    
+    if respuesta == resultado:
         print("¡Correcto!")
         puntaje += 1
     else:
-        print(f"Incorrecto. La respuesta correcta es {correcto}.")
+        print(f"Incorrecto. La respuesta correcta es {resultado}.")
 
-print(f"\nFin del quiz. Obtuviste {puntaje}/5 respuestas correctas.")
+print(f"\nPuntaje final: {puntaje}/{total_preguntas}")
