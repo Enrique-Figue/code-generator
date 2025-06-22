@@ -1,18 +1,17 @@
 # 🌡️ Conversor de Temperatura Celsius-Fahrenheit
 
-¡Bienvenido al **Conversor de Temperatura**! Este programa en Python te permite convertir fácilmente entre grados Celsius (°C) y Fahrenheit (°F) con una interfaz intuitiva.
+¡Convierte temperaturas de forma rápida y sencilla con este programa en Python! Perfecto para uso educativo, científico o cotidiano.
 
-## 🚀 Características
+## 🚀 Funcionalidades
+- **Conversión bidireccional**: Transforma **°C a °F** y **°F a °C**.
+- **Resultados en tiempo real**: ¡Observa el resultado al instante!
+- **Manejo de errores**: Notificaciones claras si se ingresan datos inválidos.
+- **Interfaz limpia**: Diseño intuitivo para una experiencia fluida.
 
-- **Conversión bidireccional**: Convierte de °C a °F y viceversa.
-- **Precisión decimal**: Resultados con hasta dos decimales.
-- **Validación de entrada**: Detecta entradas no numéricas automáticamente.
-- **Interfaz limpia**: Diseño minimalista con mensajes descriptivos.
+## 📋 Requisitos
+- Python 3.x instalado.
+- Terminal o consola para ejecución.
 
-## 📥 Requisitos
-
-- Python 3.x instalado en tu sistema.
-
-## 🛠️ Instalación
-
-1. Clona el repositorio:
+## 🛠️ Cómo usar
+1. **Descarga el script** [`temperature_converter.py`](temperature_converter.py).
+2. **Ejecuta en tu terminal**:

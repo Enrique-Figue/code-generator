@@ -1,34 +1,30 @@
-% Descripción: Este programa calcula las raíces de una ecuación cuadrática ax² + bx + c = 0,
-%              mostrando el proceso paso a paso, incluido el discriminante y el tipo de raíces.
+clear; clc;
 
-% Solicitar coeficientes al usuario
-a = input('Introduce el coeficiente a: ');
-if a == 0
-    error('El coeficiente "a" no puede ser cero en una ecuación cuadrática.');
-end
-b = input('Introduce el coeficiente b: ');
-c = input('Introduce el coeficiente c: ');
+% Programa interactivo que resuelve ecuaciones cuadráticas ax² + bx + c = 0
+% y explica detalladamente el proceso de solución
 
-% Calcular discriminante y mostrar resultados intermedios
+fprintf('Solución de ecuaciones cuadráticas\n');
+a = input('Ingrese coeficiente a: ');
+b = input('Ingrese coeficiente b: ');
+c = input('Ingrese coeficiente c: ');
+
 discriminante = b^2 - 4*a*c;
-fprintf('\nPaso 1: Calculando el discriminante D = b² - 4ac\n');
-fprintf('D = %.2f² - 4*%.2f*%.2f = %.2f\n', b, a, c, discriminante);
 
-% Determinar el tipo de raíces y calcularlas
+fprintf('\nEcuación: %.2fx² + %.2fx + %.2f = 0\n', a, b, c);
+fprintf('Discriminante D = b² - 4ac = %.4f\n', discriminante);
+
 if discriminante > 0
-    fprintf('Paso 2: Dos raíces reales distintas (D > 0)\n');
-    x1 = (-b + sqrt(discriminante)) / (2*a);
-    x2 = (-b - sqrt(discriminante)) / (2*a);
-    fprintf('Raíz 1: x = (-b + √D)/(2a) = %.4f\n', x1);
-    fprintf('Raíz 2: x = (-b - √D)/(2a) = %.4f\n', x2);
+    fprintf('D > 0: Dos raíces reales diferentes\n');
+    x1 = (-b + sqrt(discriminante))/(2*a);
+    x2 = (-b - sqrt(discriminante))/(2*a);
+    fprintf('x₁ = %.4f\nx₂ = %.4f\n', x1, x2);
 elseif discriminante == 0
-    fprintf('Paso 2: Una raíz real doble (D = 0)\n');
-    x = -b / (2*a);
-    fprintf('Raíz única: x = -b/(2a) = %.4f\n', x);
+    fprintf('D = 0: Una raíz real doble\n');
+    x = -b/(2*a);
+    fprintf('x = %.4f\n', x);
 else
-    fprintf('Paso 2: Raíces complejas conjugadas (D < 0)\n');
-    realPart = -b / (2*a);
-    imagPart = sqrt(-discriminante) / (2*a);
-    fprintf('Raíz 1: x = %.4f + %.4fi\n', realPart, imagPart);
-    fprintf('Raíz 2: x = %.4f - %.4fi\n', realPart, imagPart);
+    fprintf('D < 0: Dos raíces complejas conjugadas\n');
+    realPart = -b/(2*a);
+    imagPart = sqrt(-discriminante)/(2*a);
+    fprintf('x₁ = %.4f + %.4fi\nx₂ = %.4f - %.4fi\n', realPart, imagPart, realPart, imagPart);
 end

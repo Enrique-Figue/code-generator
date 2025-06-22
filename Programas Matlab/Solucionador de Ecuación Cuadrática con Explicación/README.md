@@ -1,14 +1,12 @@
-# 🧮 Solucionador de Ecuación Cuadrática con Explicación
+# 🧮 Solucionador de Ecuación Cuadrática con Explicación 📊
 
-¡Bienvenido al solucionador interactivo de ecuaciones cuadráticas en MATLAB! Este programa calcula las raíces de una ecuación de la forma `ax² + bx + c = 0` y explica paso a paso cómo se obtienen los resultados. 🌟
+¡Bienvenido al programa que resuelve ecuaciones cuadráticas de forma interactiva y detallada! Este script de MATLAB no solo calcula las raíces, sino que también genera una explicación paso a paso y una gráfica visual.
 
-## 📋 Requisitos
-- **MATLAB R2020a o superior**.
-- Conocimientos básicos de álgebra.
+## 🌟 Características Principales
+- **Cálculo de raíces reales/complejas** usando la fórmula cuadrática.
+- **Explicación detallada** del proceso matemático.
+- **Gráfica interactiva** de la ecuación.
+- **Validación de entrada** para asegurar coeficientes válidos.
 
-## 📥 Instalación
-1. Descarga el archivo `QuadraticSolver.m`.
-2. Guárdalo en tu carpeta de trabajo de MATLAB.
-
-## 🚀 Cómo Usar
-1. Ejecuta el programa en MATLAB:
+## 📥 Cómo Usar
+1. **Ejecuta el script** en MATLAB:
