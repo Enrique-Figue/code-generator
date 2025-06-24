@@ -1,49 +1,52 @@
-def main():
-    print("Conversor de Unidades Versátil")
-    while True:
-        print("\nOpciones disponibles:")
-        print("1. Celsius a Fahrenheit")
-        print("2. Fahrenheit a Celsius")
-        print("3. Kilómetros a Millas")
-        print("4. Millas a Kilómetros")
-        print("5. Kilogramos a Libras")
-        print("6. Libras a Kilogramos")
-        print("7. Salir")
-        
-        opcion = input("\nSeleccione una opción (1-7): ")
-        
-        if opcion == '7':
-            print("¡Hasta luego!")
-            break
-        
-        if opcion not in ('1','2','3','4','5','6'):
-            print("Error: Opción no válida. Intente nuevamente.")
-            continue
-        
-        try:
-            valor = float(input("Ingrese el valor a convertir: "))
-        except ValueError:
-            print("Error: Ingrese un número válido.")
-            continue
-        
+def convertir_temperatura():
+    opcion = input("Elige conversión:\n1. Celsius a Fahrenheit\n2. Fahrenheit a Celsius\n> ")
+    if opcion not in ('1', '2'):
+        print("Opción inválida.")
+        return
+    try:
+        valor = float(input("Ingresa la temperatura: "))
         if opcion == '1':
             resultado = (valor * 9/5) + 32
             print(f"{valor}°C = {resultado:.2f}°F")
-        elif opcion == '2':
+        else:
             resultado = (valor - 32) * 5/9
             print(f"{valor}°F = {resultado:.2f}°C")
-        elif opcion == '3':
+    except ValueError:
+        print("Error: Ingresa un número válido.")
+
+def convertir_distancia():
+    opcion = input("Elige conversión:\n1. Kilómetros a Millas\n2. Millas a Kilómetros\n> ")
+    if opcion not in ('1', '2'):
+        print("Opción inválida.")
+        return
+    try:
+        valor = float(input("Ingresa la distancia: "))
+        if opcion == '1':
             resultado = valor * 0.621371
             print(f"{valor} km = {resultado:.2f} millas")
-        elif opcion == '4':
+        else:
             resultado = valor / 0.621371
             print(f"{valor} millas = {resultado:.2f} km")
-        elif opcion == '5':
-            resultado = valor * 2.20462
-            print(f"{valor} kg = {resultado:.2f} lb")
-        elif opcion == '6':
-            resultado = valor / 2.20462
-            print(f"{valor} lb = {resultado:.2f} kg")
+    except ValueError:
+        print("Error: Ingresa un número válido.")
+
+def main():
+    while True:
+        print("\nConversor de Unidades")
+        print("1. Temperatura (Celsius <-> Fahrenheit)")
+        print("2. Distancia (Kilómetros <-> Millas)")
+        print("3. Salir")
+        opcion = input("Elige una opción: ")
+        
+        if opcion == '1':
+            convertir_temperatura()
+        elif opcion == '2':
+            convertir_distancia()
+        elif opcion == '3':
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción no válida. Intenta de nuevo.")
 
 if __name__ == "__main__":
     main()
