@@ -1,16 +1,19 @@
-# 🌡️ Conversor de Temperatura con Historial
+# 🌡️ Conversor de Temperatura con Historial 📊
 
-¡Convierte temperaturas entre Celsius, Fahrenheit y Kelvin fácilmente! Este programa incluye registro de conversiones y exportación de historial.
+¡Bienvenido/a al **Conversor de Temperatura con Historial**! Un programa en Python que convierte entre Celsius, Fahrenheit y Kelvin, y guarda un registro de tus conversiones.
 
-## 🚀 Características
-- 🔄 Conversiones entre:
-  - Celsius ↔ Fahrenheit
-  - Celsius ↔ Kelvin
-  - Fahrenheit ↔ Kelvin
-- 📜 Historial automático de conversiones
-- 💾 Exportar historial a archivo CSV
-- 🖥️ Interfaz intuitiva en la terminal
+![Badge](https://img.shields.io/badge/Python-3.8%2B-blue) ![Badge](https://img.shields.io/badge/Licencia-MIT-green)
+
+## 🚀 Características Principales
+- ✅ Conversión entre **Celsius, Fahrenheit y Kelvin**
+- 📅 Historial automático con fecha y hora
+- 📁 Guardado de resultados en formato *CSV*
+- 🎨 Interfaz intuitiva con menús interactivos
+- 🔄 Opción de convertir múltiples temperaturas
+
+## 📦 Prerrequisitos
+- Python 3.8 o superior
+- Librerías estándar de Python (no se requieren instalaciones adicionales)
 
 ## 🔧 Instalación
-1. Requiere **Python 3.10+**
-2. Clona el repositorio:
+1. Clona el repositorio:
