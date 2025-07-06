@@ -1,57 +1,44 @@
-% Descripción: Resuelve una ecuación cuadrática ax² + bx + c = 0 y grafica la función,
-% mostrando raíces reales, vértice y dirección de la parábola.
+% Solicitar coeficientes de la ecuación cuadrática (ax^2 + bx + c = 0)
+a = input('Ingrese el coeficiente a: ');
+if a == 0
+    error('El coeficiente a no puede ser cero. No es una ecuación cuadrática.');
+end
+b = input('Ingrese el coeficiente b: ');
+c = input('Ingrese el coeficiente c: ');
 
-clc;
-clear;
-close all;
-
-% Entrada de coeficientes
-a = input('Ingrese coeficiente cuadrático (a): ');
-b = input('Ingrese coeficiente lineal (b): ');
-c = input('Ingrese término independiente (c): ');
-
-% Cálculo del discriminante
+% Calcular el discriminante
 discriminante = b^2 - 4*a*c;
-vertice_x = -b/(2*a);
-vertice_y = a*(vertice_x)^2 + b*vertice_x + c;
 
-% Resolución de raíces
+% Calcular raíces según el discriminante
 if discriminante > 0
     raiz1 = (-b + sqrt(discriminante))/(2*a);
     raiz2 = (-b - sqrt(discriminante))/(2*a);
-    fprintf('Dos raíces reales:\n x1 = %.2f\n x2 = %.2f\n', raiz1, raiz2);
+    fprintf('Dos raíces reales:\n Raíz 1 = %.2f\n Raíz 2 = %.2f\n', raiz1, raiz2);
 elseif discriminante == 0
     raiz = -b/(2*a);
-    fprintf('Una raíz real doble:\n x = %.2f\n', raiz);
+    fprintf('Una raíz real doble:\n Raíz = %.2f\n', raiz);
 else
-    realPart = -b/(2*a);
-    imagPart = sqrt(abs(discriminante))/(2*a);
-    fprintf('Raíces complejas:\n x1 = %.2f + %.2fi\n x2 = %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
+    parte_real = -b/(2*a);
+    parte_imag = sqrt(abs(discriminante))/(2*a);
+    fprintf('Raíces complejas:\n Raíz 1 = %.2f + %.2fi\n Raíz 2 = %.2f - %.2fi\n', parte_real, parte_imag, parte_real, parte_imag);
 end
 
-% Creación del gráfico
-x = linspace(vertice_x-abs(vertice_x)-5, vertice_x+abs(vertice_x)+5, 400);
+% Generar datos para la gráfica
+x_vertice = -b/(2*a); % Coordenada x del vértice
+x = linspace(x_vertice - 10, x_vertice + 10, 400); % Rango centrado en el vértice
 y = a*x.^2 + b*x + c;
 
+% Graficar la función cuadrática y raíces reales
 figure;
-plot(x, y, 'LineWidth', 2, DisplayName='Función cuadrática');
+plot(x, y, 'LineWidth', 1.5, 'DisplayName', 'Función cuadrática');
 hold on;
-scatter(vertice_x, vertice_y, 100, 'filled', 'r', ...
-    DisplayName='Vértice', MarkerEdgeColor='k');
-
 if discriminante >= 0
-    if discriminante > 0
-        scatter([raiz1 raiz2], [0 0], 100, 'g', 'filled', ...
-            DisplayName='Raíces reales', MarkerEdgeColor='k');
-    else
-        scatter(raiz, 0, 100, 'g', 'filled', ...
-            DisplayName='Raíz doble', MarkerEdgeColor='k');
-    end
+    plot(raiz1, 0, 'r*', 'MarkerSize', 10, 'DisplayName', 'Raíz real');
+    plot(raiz2, 0, 'r*', 'MarkerSize', 10);
 end
-
-title(['Función: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
+title('Gráfica de la función cuadrática');
 xlabel('x');
 ylabel('f(x)');
 grid on;
-legend;
+legend show;
 hold off;
