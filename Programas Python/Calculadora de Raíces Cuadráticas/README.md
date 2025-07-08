@@ -1,14 +1,23 @@
 # 🧮 Calculadora de Raíces Cuadráticas en Python
 
-¡Bienvenido a la **Calculadora de Raíces Cuadráticas**! Este programa resuelve ecuaciones cuadráticas de la forma `ax² + bx + c = 0` y muestra las soluciones reales o complejas de manera clara y rápida.
+¡Bienvenido/a a la calculadora de raíces cuadráticas! Este programa resuelve ecuaciones de la forma **`ax² + bx + c = 0`** y muestra las soluciones de manera clara y precisa.
+
+---
+
+## 🚀 Características
+- ✅ Calcula **raíces reales y complejas**.
+- ⚠️ Verifica si el coeficiente **`a`** es cero (evitando divisiones inválidas).
+- 📊 Muestra resultados con **formato legible**.
+- 💡 Incluye mensajes de error intuitivos para entradas no numéricas.
+
+---
 
 ## 📋 Requisitos
-- **Python 3.6** o superior.
-- Conocimientos básicos de ecuaciones cuadráticas.
+- Python 3.x instalado.
+- Biblioteca `sympy` para representación matemática (instalable via `pip install sympy`).
 
-## 🚀 Instalación
-1. Clona el repositorio o descarga el archivo `calculadora_raices.py`.
-2. Abre una terminal en la ubicación del archivo.
+---
 
-## ▶️ Uso
-Ejecuta el programa con:
+## 🛠️ Cómo Usarlo
+1. **Clona o descarga** el repositorio.
+2. **Ejecuta el programa** en tu terminal:
