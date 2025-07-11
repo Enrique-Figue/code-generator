@@ -1,31 +1,31 @@
-# 📊 Solucionador y Graficador de Ecuación Cuadrática
+# 🧮 Solucionador y Graficador de Ecuación Cuadrática en MATLAB 📈
 
-¡Bienvenido! Este programa en MATLAB resuelve ecuaciones cuadráticas de forma numérica y visual, incluyendo gráficos interactivos.
-
----
-
-## 📌 Descripción
-El programa resuelve ecuaciones de la forma:  
-**`ax² + bx + c = 0`**  
-y genera una gráfica interactiva que muestra:
-- **Raíces reales/imaginarias**
-- **Vértice de la parábola**
-- **Dirección de apertura (↑/↓)**
-
-### Características:
-✅ Cálculo del discriminante  
-✅ Soluciones exactas y aproximadas  
-✅ Detección automática de raíces complejas  
-✅ Personalización de colores y estilos en la gráfica
+¡Bienvenido al programa que resuelve y grafica ecuaciones cuadráticas de forma intuitiva! Este proyecto te permite visualizar las raíces y la forma de parábola de una ecuación de segundo grado.
 
 ---
 
-## 🛠️ Requisitos
-- [MATLAB R2020a](https://www.mathworks.com/) o superior.
-- Toolbox **Symbolic Math** (para cálculos simbólicos).
+## 🔍 **¿Qué hace este programa?**
+- **Resuelve ecuaciones cuadráticas** de la forma:  
+  `ax² + bx + c = 0`
+- Calcula el **discriminante** para determinar el tipo de raíces.
+- **Grafica automáticamente** la parábola correspondiente.
+- Muestra información clave:
+  - Vértice
+  - Dirección de apertura
+  - Intersección con el eje Y
+  - Raíces reales/complejas
 
 ---
 
-## 📥 Instrucciones de Uso
-1. **Clonar el repositorio** o descargar los archivos `solucionador.m` y `graficador.m`.
-2. **Ejecutar el programa** en MATLAB:
+## ⚙️ **Requisitos previos**
+- MATLAB R2018a o superior
+- _Symbolic Math Toolbox_ instalado
+
+---
+
+## 🚀 **Cómo usar el programa**
+1. **Descarga los archivos**:
+   - `QuadraticSolver.m` (script principal)
+   - `plotQuadratic.m` (función de graficación)
+
+2. **Ejecuta en MATLAB**:
