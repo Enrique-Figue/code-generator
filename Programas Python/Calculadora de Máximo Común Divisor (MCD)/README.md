@@ -1,17 +1,13 @@
-# 🧮 Calculadora de Máximo Común Divisor (MCD) en Python ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+# 🧮 Calculadora de Máximo Común Divisor (MCD) en Python
 
-Herramienta sencilla para calcular el Máximo Común Divisor utilizando el **algoritmo de Euclides**. Perfecta para estudiantes y profesionales que necesiten resolver problemas matemáticos rápidamente.
+¡Bienvenido/a a la calculadora de MCD! Este programa calcula el **Máximo Común Divisor** de dos números enteros utilizando el algoritmo de Euclides. Ideal para estudiantes y profesionales que necesiten resultados rápidos y precisos.
 
-## 📚 Características principales
-- ✔️ Cálculo instantáneo del MCD
-- 🔢 Admite números enteros positivos
-- 📊 Método eficiente con algoritmo recursivo
-- 🛠️ Incluye validación de datos integrada
-- 🔄 Versión alternativa con `math.gcd`
+## 🚀 ¿Cómo usar el programa?
 
-## ⚙️ Requisitos
-- Python 3.8 o superior
-- 10 MB de espacio en disco
+1. **Requisitos previos**:
+   - Python 3.x instalado en tu sistema.
 
-## 🚀 Cómo usar
-1. **Ejecuta el programa**:
+2. **Ejecución**:
+   - Clona o descarga el repositorio.
+   - Abre una terminal en la carpeta del proyecto.
+   - Ejecuta el siguiente comando:

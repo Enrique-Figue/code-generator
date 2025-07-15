@@ -1,25 +1,21 @@
 def calcular_mcd(a, b):
-    """Calcula el MCD de dos números usando el algoritmo de Euclides."""
-    while b != 0:
+    """Calcula el máximo común divisor usando el algoritmo de Euclides."""
+    while b:
         a, b = b, a % b
     return a
 
-def obtener_entero_positivo(mensaje):
-    """Solicita un entero positivo al usuario hasta que ingrese un valor válido."""
-    while True:
-        try:
-            numero = int(input(mensaje))
-            if numero > 0:
-                return numero
-            print("¡El número debe ser positivo!")
-        except ValueError:
-            print("¡Entrada inválida. Debe ser un número entero!")
-
 if __name__ == "__main__":
     print("Calculadora de MCD (Máximo Común Divisor)")
-    print("-----------------------------------------")
-    num1 = obtener_entero_positivo("Ingrese el primer número positivo: ")
-    num2 = obtener_entero_positivo("Ingrese el segundo número positivo: ")
     
-    resultado = calcular_mcd(num1, num2)
-    print(f"\nEl MCD de {num1} y {num2} es: {resultado}")
+    try:
+        num1 = int(input("Ingrese el primer número entero positivo: "))
+        num2 = int(input("Ingrese el segundo número entero positivo: "))
+        
+        if num1 <= 0 or num2 <= 0:
+            raise ValueError("Los números deben ser enteros positivos")
+            
+        resultado = calcular_mcd(num1, num2)
+        print(f"\nEl MCD de {num1} y {num2} es: {resultado}")
+        
+    except ValueError as e:
+        print(f"\nError: {e}. Por favor ingrese números enteros válidos.")
