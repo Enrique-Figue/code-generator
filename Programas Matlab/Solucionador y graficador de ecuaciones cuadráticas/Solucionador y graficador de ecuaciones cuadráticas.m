@@ -1,53 +1,45 @@
-% Descripción: Este programa resuelve una ecuación cuadrática ax² + bx + c = 0,
-% muestra sus raíces y grafica la función en el dominio [-10, 10]
+% Descripción: Este programa solicita los coeficientes de una ecuación cuadrática,
+%              calcula sus raíces, el vértice de la parábola y grafica la función.
 
-% Solicitar coeficientes al usuario
-a = input('Ingrese coeficiente a: ');
-b = input('Ingrese coeficiente b: ');
-c = input('Ingrese coeficiente c: ');
-
-% Calcular discriminante
-discriminante = b^2 - 4*a*c;
-
-% Mostrar ecuación ingresada
-fprintf('\nEcuación: %.2fx² + %.2fx + %.2f = 0\n', a, b, c);
-
-% Calcular y mostrar raíces
-if discriminante > 0
-    raiz1 = (-b + sqrt(discriminante))/(2*a);
-    raiz2 = (-b - sqrt(discriminante))/(2*a);
-    fprintf('Dos raíces reales:\n  x1 = %.2f\n  x2 = %.2f\n', raiz1, raiz2);
-elseif discriminante == 0
-    raiz = -b/(2*a);
-    fprintf('Una raíz real doble:\n  x = %.2f\n', raiz);
-else
-    parte_real = -b/(2*a);
-    parte_imag = sqrt(-discriminante)/(2*a);
-    fprintf('Dos raíces complejas:\n  x1 = %.2f + %.2fi\n  x2 = %.2f - %.2fi\n',...
-            parte_real, parte_imag, parte_real, parte_imag);
+function cuadratica()
+    % Solicitar coeficientes al usuario
+    a = input('Ingrese coeficiente a: ');
+    b = input('Ingrese coeficiente b: ');
+    c = input('Ingrese coeficiente c: ');
+    
+    % Calcular discriminante
+    discriminante = b^2 - 4*a*c;
+    
+    % Calcular y mostrar raíces
+    if discriminante > 0
+        x1 = (-b + sqrt(discriminante))/(2*a);
+        x2 = (-b - sqrt(discriminante))/(2*a);
+        fprintf('Raíces reales:\nx1 = %.2f\nx2 = %.2f\n', x1, x2);
+    elseif discriminante == 0
+        x = -b/(2*a);
+        fprintf('Raíz única: x = %.2f\n', x);
+    else
+        fprintf('Raíces complejas\n');
+    end
+    
+    % Calcular y mostrar vértice
+    h = -b/(2*a);
+    k = a*h^2 + b*h + c;
+    fprintf('Vértice en (%.2f, %.2f)\n', h, k);
+    
+    % Generar puntos para la gráfica
+    x = linspace(h-5, h+5, 100);
+    y = a*x.^2 + b*x + c;
+    
+    % Configurar y mostrar gráfica
+    figure;
+    plot(x, y, 'b-', 'LineWidth', 2);
+    hold on;
+    plot(h, k, 'ro', 'MarkerSize', 8);
+    title(['Función cuadrática: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
+    xlabel('x');
+    ylabel('y');
+    grid on;
+    legend('Función', 'Vértice', 'Location', 'best');
+    hold off;
 end
-
-% Crear vector x y calcular y correspondiente
-x = linspace(-10, 10, 400);
-y = a*x.^2 + b*x + c;
-
-% Graficar la función cuadrática
-figure;
-plot(x, y, 'b-', 'LineWidth', 2);
-hold on;
-plot(xlim, [0 0], 'k--'); % Eje x
-plot([0 0], ylim, 'k--'); % Eje y
-title('Gráfico de la función cuadrática');
-xlabel('x');
-ylabel('f(x)');
-grid on;
-
-% Marcar raíces reales si existen
-if discriminante >= 0
-    raices = roots([a b c]);
-    plot(raices, zeros(size(raices)), 'ro', 'MarkerSize', 8);
-    legend('Función cuadrática', 'Ejes', 'Raíces');
-else
-    legend('Función cuadrática', 'Ejes');
-end
-hold off;

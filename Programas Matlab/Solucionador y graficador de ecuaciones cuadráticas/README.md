@@ -1,20 +1,28 @@
-# 🎯 Solucionador y Graficador de Ecuaciones Cuadráticas en MATLAB
+# 📚 Solucionador y Graficador de Ecuaciones Cuadráticas en MATLAB
 
-¡Bienvenido al programa que resuelve y grafica ecuaciones cuadráticas de forma intuitiva! Este proyecto está diseñado para estudiantes, profesores y entusiastas de las matemáticas que buscan una herramienta visual para explorar ecuaciones de la forma:  
-`ax² + bx + c = 0`
-
----
-
-## 🌟 Características Principales
-- **Cálculo rápido de raíces**: Obtén las soluciones reales y complejas de la ecuación.
-- **Gráfico interactivo**: Visualiza la parábola generada por la ecuación cuadrática.
-- **Validación de entradas**: Asegura que los coeficientes ingresados sean válidos.
-- **Personalización**: Cambia colores y estilos de la gráfica según tus preferencias.
+¡Bienvenido al programa que resuelve y grafica ecuaciones cuadráticas de forma intuitiva y visual! 
 
 ---
 
-## 🚀 Cómo Usar el Programa
+## 🔍 ¿Qué hace este programa?
+Resuelve ecuaciones de la forma **ax² + bx + c = 0** y genera gráficos interactivos para analizar su comportamiento.
 
-### 1. **Ejecutar el Script**
-   - Abre MATLAB y navega al directorio del proyecto.
-   - Ejecuta el script principal:
+### Características Principales:
+- ✅ **Solución exacta de raíces** (reales o complejas).
+- 📊 **Gráfico personalizable** de la parábola.
+- 📝 **Análisis del discriminante** para determinar la naturaleza de las raíces.
+- 🖥️ Interfaz amigable con prompts interactivos en la terminal.
+- 🧩 Compatible con MATLAB 2018a o superior.
+
+---
+
+## ⚙️ Requisitos del Sistema
+- MATLAB R2020a o posterior.
+- **Toolbox requerido**: Symbolic Math Toolbox (para cálculos simbólicos).
+
+---
+
+## 🚀 ¿Cómo usarlo?
+1. **Descarga/clona** este repositorio.
+2. **Ejecuta** el archivo `QuadraticSolver.m` en MATLAB.
+3. **Ingresa los coeficientes** cuando se solicite:
