@@ -1,19 +1,16 @@
-# 📊 Solucionador de Ecuación Cuadrática en MATLAB
+# 🧮 Solucionador de Ecuación Cuadrática en MATLAB
 
-¡Bienvenido al **Solucionador de Ecuación Cuadrática**! Este programa calcula las raíces reales o complejas de una ecuación cuadrática de forma rápida y precisa.
+¡Bienvenido al **Solucionador de Ecuación Cuadrática**! Este programa MATLAB calcula las raíces de una ecuación cuadrática de la forma estándar \( ax^2 + bx + c = 0 \) utilizando la fórmula general. Ideal para estudiantes, docentes o entusiastas de las matemáticas.
 
-![Ecuación Cuadrática](https://latex.codecogs.com/png.latex?ax%5E2%20&plus;%20bx%20&plus;%20c%20%3D%200)  
-*Fórmula general: [x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}]*
+---
 
-## 🚀 Características
-- **Resuelve ecuaciones cuadráticas** de coeficientes reales.
-- **Manejo de raíces complejas** si el discriminante es negativo.
-- **Validación de entrada** para coeficientes numéricos.
-- **Interfaz intuitiva** en la línea de comandos.
+## 🌟 Características Principales
+- **Fácil de usar**: Interfaz intuitiva por línea de comandos.
+- **Soporte completo**: Calcula raíces **reales** y **complejas**.
+- **Manejo de casos especiales**: Detecta si la ecuación es lineal (\( a = 0 \)) o si hay raíces múltiples.
+- **Resultados detallados**: Muestra discriminante, raíces y tipo de solución.
 
-## 📥 Instalación
-1. Descarga el archivo `QuadraticSolver.m`.
-2. Colócalo en tu directorio de trabajo de MATLAB.
+---
 
-## 🖥️ Uso
-1. Ejecuta el programa en MATLAB:
+## 🚀 ¿Cómo Usarlo?
+1. **Ejecuta el programa** en MATLAB:
