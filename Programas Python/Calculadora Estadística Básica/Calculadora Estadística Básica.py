@@ -1,28 +1,39 @@
-import statistics
-
-try:
-    entrada = input("Ingrese números separados por coma: ")
-    numeros = [float(num) for num in entrada.split(',')]
+def calcular_estadisticas(numeros):
+    """Calcula y muestra estadísticas básicas de una lista de números"""
+    if not numeros:
+        print("No se ingresaron números válidos")
+        return
     
-    promedio = sum(numeros) / len(numeros)
-    maximo = max(numeros)
+    suma = sum(numeros)
+    promedio = suma / len(numeros)
     minimo = min(numeros)
-    mediana = statistics.median(numeros)
+    maximo = max(numeros)
     
-    try:
-        moda = statistics.mode(numeros)
-        moda_msg = f"Moda: {moda}"
-    except statistics.StatisticsError:
-        moda_msg = "Moda: No hay moda única"
-    
-    print(f"\nResultados:")
-    print(f"Promedio: {promedio:.2f}")
-    print(f"Máximo: {maximo:.2f}")
-    print(f"Mínimo: {minimo:.2f}")
-    print(f"Mediana: {mediana:.2f}")
-    print(moda_msg)
+    print("\nResumen estadístico:")
+    print(f"- Cantidad de números: {len(numeros)}")
+    print(f"- Suma total: {suma}")
+    print(f"- Promedio: {promedio:.2f}")
+    print(f"- Valor mínimo: {minimo}")
+    print(f"- Valor máximo: {maximo}")
 
-except ValueError:
-    print("Error: Asegúrese de ingresar solo números separados por comas.")
-except ZeroDivisionError:
-    print("Error: No se ingresaron números válidos.")
+def main():
+    """Función principal del programa"""
+    print("Calculadora Estadística Básica")
+    print("Ingrese números uno por uno (deje vacío para finalizar)")
+    
+    numeros = []
+    while True:
+        entrada = input("→ ")
+        if entrada == "":
+            break
+        try:
+            numero = float(entrada)
+            numeros.append(numero)
+        except ValueError:
+            print("Error: Ingrese un número válido")
+    
+    calcular_estadisticas(numeros)
+    print("\n¡Gracias por usar la calculadora!")
+
+if __name__ == "__main__":
+    main()
