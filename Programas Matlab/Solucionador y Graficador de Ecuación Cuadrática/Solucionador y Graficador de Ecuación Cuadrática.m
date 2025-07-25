@@ -1,67 +1,69 @@
-clear;
-clc;
+clc; clear; close all;
 
-disp('Programa para resolver ecuación cuadrática: ax² + bx + c = 0');
-disp('Ingrese los coeficientes a, b, c:');
+% Solicitar coeficientes al usuario
+a = input('Ingrese el coeficiente cuadrático (a): ');
+b = input('Ingrese el coeficiente lineal (b): ');
+c = input('Ingrese el término independiente (c): ');
 
-% Validar entrada de 'a' no nulo
-a = 0;
-while a == 0
-    a = input('a (no cero): ');
-    if a == 0
-        disp('a no puede ser cero. Ingrese de nuevo.');
-    end
+% Verificar si es ecuación cuadrática
+if a == 0
+    error('La ecuación no es cuadrática (a = 0)');
 end
-
-b = input('b: ');
-c = input('c: ');
 
 % Calcular discriminante
 D = b^2 - 4*a*c;
 
-% Determinar tipo de raíces
+% Calcular raíces y vértice
 if D > 0
+    % Dos raíces reales distintas
     x1 = (-b + sqrt(D))/(2*a);
     x2 = (-b - sqrt(D))/(2*a);
-    disp('Raíces reales y distintas:');
-    fprintf('x1 = %.2f\nx2 = %.2f\n', x1, x2);
+    tipo_raices = 'dos raíces reales distintas';
 elseif D == 0
+    % Una raíz real doble
     x1 = -b/(2*a);
-    disp('Raíz real repetida:');
-    fprintf('x = %.2f\n', x1);
+    x2 = x1;
+    tipo_raices = 'una raíz real doble';
 else
-    realPart = -b/(2*a);
-    imagPart = sqrt(-D)/(2*a);
-    disp('Raíces complejas conjugadas:');
-    fprintf('x1 = %.2f + %.2fi\nx2 = %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
+    % Raíces complejas conjugadas
+    x1 = (-b + sqrt(complex(D)))/(2*a);
+    x2 = (-b - sqrt(complex(D)))/(2*a);
+    tipo_raices = 'raíces complejas conjugadas';
 end
 
-% Graficar la función cuadrática
-vx = -b/(2*a);         % Coordenada x del vértice
-vy = a*vx^2 + b*vx + c;% Coordenada y del vértice
-x = linspace(vx-10, vx+10, 1000);
+% Calcular coordenadas del vértice
+h = -b/(2*a);
+k = a*h^2 + b*h + c;
+
+% Generar puntos para la gráfica
+x = linspace(h-5, h+5, 1000);
 y = a*x.^2 + b*x + c;
 
+% Graficar parábola
 figure;
-plot(x, y, 'b', 'LineWidth', 1.5);
+plot(x, y, 'b-', 'LineWidth', 2);
 hold on;
-plot(vx, vy, 'ro', 'MarkerSize', 8, 'LineWidth', 2); % Marcar vértice
-
-% Marcar raíces reales si existen
-if D >= 0
-    plot(x1, 0, 'go', 'MarkerSize', 8, 'LineWidth', 2);
-    if D > 0
-        plot(x2, 0, 'go', 'MarkerSize', 8, 'LineWidth', 2);
-        legend('f(x)', 'Vértice', 'Raíces');
-    else
-        legend('f(x)', 'Vértice', 'Raíz');
-    end
-else
-    legend('f(x)', 'Vértice');
-end
-
 grid on;
+title('Gráfica de la Función Cuadrática');
 xlabel('x');
 ylabel('f(x)');
-title('Gráfica de la Ecuación Cuadrática');
-hold off;
+
+% Marcar raíces y vértice si son reales
+if D >= 0
+    plot([x1 x2], [0 0], 'ro', 'MarkerSize', 10, 'LineWidth', 2);
+end
+plot(h, k, 'gs', 'MarkerSize', 10, 'LineWidth', 2);
+
+legend('Función', 'Raíces', 'Vértice', 'Location', 'best');
+
+% Mostrar resultados en consola
+fprintf('\nRESULTADOS:\n');
+fprintf('Tipo de raíces: %s\n', tipo_raices);
+if D >= 0
+    fprintf('Raíz 1: %.2f\n', x1);
+    fprintf('Raíz 2: %.2f\n', x2);
+else
+    fprintf('Raíz 1: %.2f + %.2fi\n', real(x1), imag(x1));
+    fprintf('Raíz 2: %.2f - %.2fi\n', real(x2), imag(x2));
+end
+fprintf('Vértice: (%.2f, %.2f)\n', h, k);

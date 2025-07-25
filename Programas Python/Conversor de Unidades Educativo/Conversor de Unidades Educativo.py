@@ -1,41 +1,29 @@
-def mostrar_menu():
-    print("\n1. Celsius a Fahrenheit")
-    print("2. Millas a Kilómetros")
-    print("3. Libras a Kilogramos")
-    print("4. Salir")
-
-def celsius_a_fahrenheit(c):
-    return (c * 9/5) + 32
-
-def millas_a_kilometros(m):
-    return m * 1.60934
-
-def libras_a_kilogramos(l):
-    return l * 0.453592
-
 def main():
+    print("¡Bienvenido al Conversor de Unidades!")
+    print("Opción 1: Kilómetros a Millas")
+    print("Opción 2: Celsius a Fahrenheit")
+    print("Opción 3: Kilogramos a Libras")
+    print("Opción 4: Salir\n")
+
     while True:
-        mostrar_menu()
         try:
-            opcion = int(input("Seleccione una conversión (1-4): "))
-            if opcion == 4:
+            opcion = int(input("Seleccione una opción (1-4): "))
+            if opcion == 1:
+                km = float(input("Ingrese kilómetros: "))
+                print(f"{km} km = {km * 0.621371:.2f} millas\n")
+            elif opcion == 2:
+                celsius = float(input("Ingrese temperatura en °C: "))
+                print(f"{celsius}°C = {(celsius * 9/5) + 32:.2f}°F\n")
+            elif opcion == 3:
+                kg = float(input("Ingrese kilogramos: "))
+                print(f"{kg} kg = {kg * 2.20462:.2f} libras\n")
+            elif opcion == 4:
                 print("¡Hasta luego!")
                 break
-            elif 1 <= opcion <= 3:
-                valor = float(input("Ingrese el valor a convertir: "))
-                if opcion == 1:
-                    resultado = celsius_a_fahrenheit(valor)
-                    print(f"{valor}°C = {resultado:.2f}°F")
-                elif opcion == 2:
-                    resultado = millas_a_kilometros(valor)
-                    print(f"{valor} millas = {resultado:.2f} km")
-                elif opcion == 3:
-                    resultado = libras_a_kilogramos(valor)
-                    print(f"{valor} libras = {resultado:.2f} kg")
             else:
-                print("Opción no válida. Intente nuevamente.")
+                print("⚠️ Opción inválida. Intente nuevamente.\n")
         except ValueError:
-            print("Entrada inválida. Ingrese un número.")
+            print("⚠️ Error: Ingrese valores numéricos válidos.\n")
 
 if __name__ == "__main__":
     main()
