@@ -1,16 +1,21 @@
-# 🧮 Solucionador y Graficador de Ecuaciones Cuadráticas
+# 🧮 Solucionador y Graficador de Ecuaciones Cuadráticas en Matlab
 
-Un programa en MATLAB que resuelve ecuaciones cuadráticas de la forma \( ax^2 + bx + c = 0 \) y genera una gráfica interactiva de la parábola.
+¡Bienvenido al programa que resuelve y grafica ecuaciones cuadráticas de forma intuitiva! 🌟
 
-## 🌟 Características
-- **Cálculo de raíces**: Encuentra soluciones reales o complejas.
-- **Gráfica interactiva**: Visualiza la parábola con el vértice y raíces destacadas.
-- **Validación de coeficientes**: Asegura que \( a \neq 0 \).
-- **Salida detallada**: Muestra el discriminante, vértice, intercepto con el eje Y y tipo de raíces.
+## 📌 Descripción
+Este programa:
+- **Calcula las raíces** de una ecuación cuadrática de la forma \( ax^2 + bx + c = 0 \).
+- **Grafica la parábola** correspondiente.
+- Muestra información clave como el **vértice**, **dirección de apertura** y **puntos de intersección** con los ejes.
 
-## 📋 Requisitos
-- MATLAB R2018b o superior.
-- *Toolbox de MATLAB*: Ninguno necesario.
+## 🚀 Características
+- 💻 Interfaz interactiva mediante `input` en línea de comandos.
+- 📊 Gráficos personalizados con etiquetas claras.
+- 📝 Validación de entradas para evitar errores.
 
-## 🚀 Cómo usar
-1. **Ejecutar el programa**:
+## 🔧 Requisitos
+- **MATLAB R2018a** o superior.
+- *Symbolic Math Toolbox* (para cálculo simbólico).
+
+## 📥 Instalación
+1. Descarga el repositorio:
