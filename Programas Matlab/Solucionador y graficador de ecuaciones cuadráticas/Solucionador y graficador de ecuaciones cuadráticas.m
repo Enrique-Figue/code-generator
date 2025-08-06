@@ -1,51 +1,57 @@
-% Descripción: Resuelve una ecuación cuadrática ax² + bx + c = 0 y grafica la función
+% Descripción: Este programa resuelve una ecuación cuadrática ax² + bx + c = 0,
+% calcula sus raíces y grafica la función correspondiente, mostrando características importantes.
+
+clc;
+clear all;
+close all;
 
 % Solicitar coeficientes al usuario
 a = input('Ingrese el coeficiente a: ');
-if a == 0
-    error('El coeficiente a no puede ser cero.');  % Validar entrada
-end
 b = input('Ingrese el coeficiente b: ');
 c = input('Ingrese el coeficiente c: ');
 
-% Calcular discriminante y raíces
+% Calcular determinante
 discriminante = b^2 - 4*a*c;
-raices = roots([a b c]);  % Usar función roots de MATLAB
 
-% Mostrar resultados numéricos
-fprintf('\nResultados:')
-fprintf('\nDiscriminante: %.2f', discriminante);
-
-if isreal(raices)
-    fprintf('\nRaíces reales:\n');
+% Calcular y mostrar raíces
+if a == 0
+    error('El coeficiente "a" no puede ser cero en una ecuación cuadrática');
 else
-    fprintf('\nRaíces complejas:\n');
+    if discriminante > 0
+        raiz1 = (-b + sqrt(discriminante))/(2*a);
+        raiz2 = (-b - sqrt(discriminante))/(2*a);
+        fprintf('Dos raíces reales:\n %.4f\n %.4f\n', raiz1, raiz2);
+    elseif discriminante == 0
+        raiz = -b/(2*a);
+        fprintf('Una raíz real doble:\n %.4f\n', raiz);
+    else
+        realPart = -b/(2*a);
+        imagPart = sqrt(abs(discriminante))/(2*a);
+        fprintf('Raíces complejas:\n %.2f + %.2fi\n %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
+    end
 end
-disp(raices)
 
-% Generar puntos para la gráfica
-x = linspace(min(raices)-2, max(raices)+2, 400);
+% Crear vector x para graficar
+x = linspace(-10, 10, 400);
 y = a*x.^2 + b*x + c;
 
-% Configurar gráfica
+% Graficar la función cuadrática
 figure;
-plot(x, y, 'LineWidth', 2, DisplayName='Función cuadrática');
+plot(x, y, 'b', 'LineWidth', 2);
+grid on;
 hold on;
-scatter(real(raices), zeros(size(raices)), 100, 'filled',...
-    MarkerFaceColor='r', DisplayName='Raíces');
-title(sprintf('f(x) = %.1fx² + %.1fx + %.1f', a, b, c));
+
+% Marcar vértice y raíces si existen
+vertice_x = -b/(2*a);
+vertice_y = a*(vertice_x)^2 + b*vertice_x + c;
+plot(vertice_x, vertice_y, 'ro', 'MarkerSize', 8);
+
+if discriminante >= 0 && a ~= 0
+    plot([raiz1, raiz2], [0, 0], 'k*', 'MarkerSize', 8);
+end
+
+title(['Función cuadrática: ' num2str(a) 'x² + ' num2str(b) 'x + ' num2str(c)]);
 xlabel('x');
 ylabel('f(x)');
-grid on;
-
-% Calcular y mostrar vértice
-vertice_x = -b/(2*a);
-vertice_y = a*vertice_x^2 + b*vertice_x + c;
-plot(vertice_x, vertice_y, 'sg', 'MarkerSize', 10,...
-    MarkerFaceColor='g', DisplayName='Vértice');
-
-% Añadir referencias visuales
-xline(0,'k--', 'Label','x=0');
-yline(0,'k--', 'Label','y=0');
-legend('Location','best');
-hold off;
+legend('Función', 'Vértice', 'Raíces');
+axis tight;
