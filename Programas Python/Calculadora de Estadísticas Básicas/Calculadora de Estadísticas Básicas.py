@@ -1,25 +1,29 @@
-def calcular_media(numeros):
-    return sum(numeros) / len(numeros) if numeros else 0
-
-def calcular_mediana(numeros):
-    ordenados = sorted(numeros)
-    n = len(ordenados)
-    mitad = n // 2
-    if n % 2 == 1:
-        return ordenados[mitad]
-    return (ordenados[mitad - 1] + ordenados[mitad]) / 2
-
-def calcular_moda(numeros):
-    frecuencias = {}
-    for num in numeros:
-        frecuencias[num] = frecuencias.get(num, 0) + 1
-    max_frec = max(frecuencias.values(), default=0)
-    modas = [num for num, freq in frecuencias.items() if freq == max_frec]
-    return modas[0] if len(modas) == 1 else modas
+def calcular_estadisticas():
+    # Solicitar lista de números al usuario
+    while True:
+        entrada = input("Ingrese números separados por comas: ")
+        numeros = entrada.replace(' ', '').split(',')
+        
+        try:
+            lista_numeros = [float(num) for num in numeros]
+            break
+        except ValueError:
+            print("Error: Asegúrese de ingresar solo números separados por comas. Intente de nuevo.")
+    
+    # Calcular estadísticas
+    total = len(lista_numeros)
+    suma = sum(lista_numeros)
+    promedio = suma / total if total > 0 else 0
+    maximo = max(lista_numeros) if lista_numeros else None
+    minimo = min(lista_numeros) if lista_numeros else None
+    
+    # Mostrar resultados
+    print("\nEstadísticas:")
+    print(f"Cantidad de números: {total}")
+    print(f"Suma total: {suma}")
+    print(f"Promedio: {promedio:.2f}")
+    print(f"Máximo: {maximo}")
+    print(f"Mínimo: {minimo}")
 
 if __name__ == "__main__":
-    muestra = [3, 1, 4, 1, 5, 9, 2, 6]
-    print("Muestra:", muestra)
-    print(f"Media: {calcular_media(muestra):.2f}")
-    print(f"Mediana: {calcular_mediana(muestra)}")
-    print(f"Moda: {calcular_moda(muestra)}")
+    calcular_estadisticas()
