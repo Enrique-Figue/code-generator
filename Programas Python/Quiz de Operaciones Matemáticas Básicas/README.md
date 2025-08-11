@@ -1,17 +1,21 @@
-# 🧮 Quiz de Operaciones Matemáticas Básicas 📚
+# 📚 Quiz de Operaciones Matemáticas Básicas
 
-¡Bienvenido/a al **Quiz de Operaciones Matemáticas Básicas**! Un programa interactivo en Python diseñado para poner a prueba tu agilidad mental con operaciones simples. Ideal para estudiantes, profesores o cualquier amante de los números.
-
----
-
-## 🚀 **¿Qué hace este programa?**
-- Genera preguntas aleatorias de **suma, resta, multiplicación y división**.
-- ⏱️ Configurable con **tiempo límite por pregunta**.
-- 📊 Muestra tu **puntuación en tiempo real**.
-- ✅ Ofrece retroalimentación inmediata (respuestas correctas/incorrectas).
-- 🎯 Dificultad progresiva: ¡las operaciones se vuelven más complejas según tu rendimiento!
+¡Pon a prueba tus habilidades matemáticas con este quiz interactivo en Python! El programa genera preguntas aleatorias de **suma, resta, multiplicación y división** para desafiar tu agilidad numérica.
 
 ---
 
-## 📦 **Instalación**
-1. Clona el repositorio:
+## 🚀 Características principales
+- ✅ **4 operaciones básicas** (+, -, ×, ÷)
+- 🔀 Generación **aleatoria** de preguntas
+- ⏱️ Contador de tiempo para respuestas rápidas
+- 📊 Sistema de puntuación con feedback inmediato
+- 🎯 Niveles de dificultad automáticos (rangos numéricos variables)
+
+---
+
+## 🔧 Cómo funciona
+1. **Configuración inicial**  
+   Elige cuántas preguntas deseas responder.
+   
+2. **Ronda de preguntas**  
+   Resuelve operaciones como:
