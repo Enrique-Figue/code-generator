@@ -1,61 +1,45 @@
-function [raiz, iter] = newton_raphson(f, df, x0, tol, max_iter)
-    % Encuentra la raíz de una función utilizando el método de Newton-Raphson
-    % Entradas:
-    %   f: función handle de la cual encontrar la raíz (ej. @(x) x^2 - 2)
-    %   df: función handle de la derivada de f (ej. @(x) 2*x)
-    %   x0: aproximación inicial
-    %   tol: tolerancia para la convergencia (por defecto 1e-6)
-    %   max_iter: máximo número de iteraciones (por defecto 100)
-    % Salidas:
-    %   raíz: aproximación de la raíz
-    %   iter: número de iteraciones realizadas
+function [raiz, iter] = newton_raphson()
+    % ENTRADA:
+    %   func: Función handle para f(x) (ejemplo: @(x) x^2 - 2)
+    %   dfunc: Función handle para f'(x) (ejemplo: @(x) 2*x)
+    %   x0: Valor inicial (predeterminado: 1)
+    %   tol: Tolerancia (predeterminado: 1e-6)
+    %   max_iter: Máximo de iteraciones (predeterminado: 100)
+    %
+    % SALIDA:
+    %   raiz: Aproximación de la raíz
+    %   iter: Iteraciones realizadas
+    
+    % Configuración inicial
+    func = @(x) x^2 - 2;       % Función ejemplo (raíz en sqrt(2))
+    dfunc = @(x) 2*x;          % Derivada
+    x0 = 1;                    % Valor inicial
+    tol = 1e-8;               % Tolerancia de error
+    max_iter = 50;            % Límite de iteraciones
 
-    % Establecer valores por defecto si no se proporcionan
-    if nargin < 5
-        max_iter = 100;
-        if nargin < 4
-            tol = 1e-6;
-        end
-    end
-
-    % Inicializar variables
-    raiz = x0;
-    iter = 0;
-    convergencia = false;
-
-    % Bucle principal
-    while iter < max_iter
-        f_val = f(raiz);
-        df_val = df(raiz);
+    fprintf('Newton-Raphson para f(x) = x^2 - 2:\n');
+    
+    xn = x0;
+    for iter = 1:max_iter
+        fxn = func(xn);
+        df_xn = dfunc(xn);
         
-        % Verificar división por cero en la derivada
-        if df_val == 0
-            error('Derivada cero en x=%.6f. El método no puede continuar.', raiz);
+        if abs(df_xn) < eps    % Evitar división por cero
+            error('Derivada cercana a cero en iteración %d', iter);
         end
         
-        % Mostrar información de la iteración
-        fprintf('Iteración %d: x = %.6f, f(x) = %.6e\n', iter, raiz, f_val);
+        xn_nuevo = xn - fxn/df_xn;  % Fórmula principal
+        error_abs = abs(xn_nuevo - xn);
         
-        % Actualizar la aproximación
-        raiz_nueva = raiz - f_val / df_val;
+        fprintf('Iter %d: x = %.8f, Error = %.2e\n', iter, xn_nuevo, error_abs);
         
-        % Verificar convergencia
-        if abs(raiz_nueva - raiz) < tol
-            convergencia = true;
-            break;
+        if error_abs < tol
+            raiz = xn_nuevo;
+            fprintf('\nConvergencia alcanzada en %d iteraciones\n', iter);
+            fprintf('Raíz encontrada: %.8f\n', raiz);
+            return
         end
-        
-        raiz = raiz_nueva;
-        iter = iter + 1;
+        xn = xn_nuevo;
     end
-
-    % Resultados finales
-    if ~convergencia
-        error('El método no convergió en %d iteraciones.', max_iter);
-    else
-        fprintf('\nRaíz encontrada en x = %.6f después de %d iteraciones.\n', raiz, iter);
-    end
+    error('Máximo de iteraciones alcanzado sin converger');
 end
-
-% Ejemplo de uso (ejecutar en la línea de comandos):
-% [raiz, iter] = newton_raphson(@(x) x^2 - 2, @(x) 2*x, 1.5, 1e-6, 100);
