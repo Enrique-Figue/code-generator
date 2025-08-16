@@ -1,55 +1,47 @@
-clc; clear;  % Limpiar pantalla y workspace
+% Descripción: Este programa calcula las raíces de una ecuación cuadrática
+% y grafica la función en el dominio real, mostrando las raíces encontradas.
 
-% Solicitar coeficientes de la ecuación
-a = input('Ingrese el coeficiente a: ');
-b = input('Ingrese el coeficiente b: ');
-c = input('Ingrese el coeficiente c: ');
-
-% Verificar ecuación cuadrática válida
-if a == 0
-    error('El coeficiente a debe ser diferente de cero para una ecuación cuadrática.');
-end
-
-% Calcular discriminante
-D = b^2 - 4*a*c;
-fprintf('\nDiscriminante calculado: %.2f\n', D);
-
-% Determinar naturaleza de las raíces
-if D > 0
-    x1 = (-b + sqrt(D))/(2*a);
-    x2 = (-b - sqrt(D))/(2*a);
-    fprintf('Dos raíces reales:\nx1 = %.2f\nx2 = %.2f\n', x1, x2);
-elseif D == 0
-    x1 = -b/(2*a);
-    fprintf('Una raíz real doble:\nx = %.2f\n', x1);
-else
-    realPart = -b/(2*a);
-    imagPart = sqrt(-D)/(2*a);
-    fprintf('Raíces complejas conjugadas:\nx1 = %.2f + %.2fi\nx2 = %.2f - %.2fi\n', realPart, imagPart, realPart, imagPart);
-end
-
-% Crear vector x alrededor del vértice
-x_vertice = -b/(2*a);
-x = linspace(x_vertice-5, x_vertice+5, 400);
-
-% Calcular valores y correspondientes
-y = a*x.^2 + b*x + c;
-
-% Graficar parábola
-figure;
-plot(x, y, 'b-', 'LineWidth', 1.5);
-hold on;
-title(sprintf('y = %.2fx² + %.2fx + %.2f', a, b, c));
-xlabel('x'); ylabel('y'); grid on;
-
-% Marcar raíces reales si existen
-if D >= 0
-    if D > 0
-        plot([x1, x2], [0, 0], 'ro', 'MarkerSize', 8, 'LineWidth', 2);
-        legend('Parábola', 'Raíces', 'Location', 'best');
+function cuadratica()
+    % Solicitar coeficientes al usuario
+    disp('Ingrese coeficientes de la ecuación ax² + bx + c = 0:');
+    a = input('a = ');
+    b = input('b = ');
+    c = input('c = ');
+    
+    % Calcular discriminante
+    discriminante = b^2 - 4*a*c;
+    
+    % Calcular raíces
+    if discriminante >= 0
+        raiz1 = (-b + sqrt(discriminante))/(2*a);
+        raiz2 = (-b - sqrt(discriminante))/(2*a);
+        disp(['Raíces reales: x1 = ', num2str(raiz1), ', x2 = ', num2str(raiz2)]);
     else
-        plot(x1, 0, 'ro', 'MarkerSize', 8, 'LineWidth', 2);
-        legend('Parábola', 'Raíz doble', 'Location', 'best');
+        realPart = -b/(2*a);
+        imagPart = sqrt(-discriminante)/(2*a);
+        disp(['Raíces complejas: x1 = ', num2str(realPart), ' + ', num2str(imagPart), 'i, ',...
+              'x2 = ', num2str(realPart), ' - ', num2str(imagPart), 'i']);
     end
+    
+    % Crear vector x para graficación
+    x = linspace(-10, 10, 400);
+    y = a*x.^2 + b*x + c;
+    
+    % Configurar y mostrar gráfico
+    figure;
+    plot(x, y, 'b-', 'LineWidth', 2);
+    hold on;
+    
+    % Marcar raíces reales si existen
+    if discriminante >= 0
+        plot(raiz1, 0, 'r*', 'MarkerSize', 10);
+        plot(raiz2, 0, 'r*', 'MarkerSize', 10);
+    end
+    
+    title(['Función cuadrática: ', num2str(a), 'x² + ', num2str(b), 'x + ', num2str(c)]);
+    xlabel('x');
+    ylabel('f(x)');
+    grid on;
+    legend('Función', 'Raíces', 'Location', 'best');
+    hold off;
 end
-hold off;
