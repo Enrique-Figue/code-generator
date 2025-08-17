@@ -1,55 +1,38 @@
-% Descripción: Resuelve ecuaciones de segundo grado de la forma ax² + bx + c = 0
-%   y muestra información educativa sobre el proceso de solución y discriminante
+clc; clear;  % Limpiar consola y workspace
 
-% Limpiar espacio de trabajo
-clc;
-clear;
+disp('Resolución de ecuación cuadrática ax² + bx + c = 0');
+a = input('Ingrese coeficiente a: ');
+b = input('Ingrese coeficiente b: ');
+c = input('Ingrese coeficiente c: ');
 
-% Solicitar coeficientes al usuario
-a = input('Ingrese el coeficiente a (diferente de 0): ');
-b = input('Ingrese el coeficiente b: ');
-c = input('Ingrese el coeficiente c: ');
-
-% Calcular discriminante
-discriminante = b^2 - 4*a*c;
-
-% Mostrar información del discriminante
-fprintf('\nDiscriminante D = b² - 4ac = %.2f\n', discriminante);
-
-% Determinar naturaleza de las raíces
-if discriminante > 0
-    fprintf('D > 0: Dos raíces reales distintas\n');
-elseif discriminante == 0
-    fprintf('D = 0: Una raíz real doble\n');
-else
-    fprintf('D < 0: Dos raíces complejas conjugadas\n');
-end
-
-% Calcular y mostrar soluciones
 if a == 0
-    error('El coeficiente a debe ser diferente de cero para una ecuación cuadrática');
-else
-    parte_real = -b/(2*a);
-    parte_imaginaria = sqrt(abs(discriminante))/(2*a);
-    
-    if discriminante >= 0
-        x1 = parte_real + parte_imaginaria;
-        x2 = parte_real - parte_imaginaria;
-        fprintf('\nSoluciones:\n');
-        fprintf('x₁ = %.4f\nx₂ = %.4f\n', x1, x2);
+    % Caso ecuación lineal
+    if b == 0
+        if c == 0
+            disp('Ecuación trivial: 0 = 0 (cualquier x es solución)');
+        else
+            disp('Ecuación contradictoria: no hay solución');
+        end
     else
-        fprintf('\nSoluciones complejas:\n');
-        fprintf('x₁ = %.4f + %.4fi\n', parte_real, parte_imaginaria);
-        fprintf('x₂ = %.4f - %.4fi\n', parte_real, parte_imaginaria);
+        x = -c/b;
+        fprintf('Ecuación lineal. Solución única: x = %.2f\n', x);
     end
-end
-
-% Mostrar forma factorizada (si es aplicable)
-if discriminante >= 0 && a == 1
-    fprintf('\nForma factorizada:\n');
-    if discriminante == 0
-        fprintf('(x %+.2f)²\n', -x1);
+else
+    % Cálculo del discriminante
+    discriminante = b^2 - 4*a*c;
+    
+    % Determinación del tipo de raíces
+    if discriminante > 0
+        x1 = (-b + sqrt(discriminante))/(2*a);
+        x2 = (-b - sqrt(discriminante))/(2*a);
+        fprintf('Dos raíces reales:\nx1 = %.2f\nx2 = %.2f\n', x1, x2);
+    elseif discriminante == 0
+        x = -b/(2*a);
+        fprintf('Una raíz real doble:\nx = %.2f\n', x);
     else
-        fprintf('(x %+.2f)(x %+.2f)\n', -x1, -x2);
+        realPart = -b/(2*a);
+        imagPart = sqrt(-discriminante)/(2*a);
+        fprintf('Dos raíces complejas:\nx1 = %.2f + %.2fi\nx2 = %.2f - %.2fi\n',...
+                realPart, imagPart, realPart, imagPart);
     end
 end
