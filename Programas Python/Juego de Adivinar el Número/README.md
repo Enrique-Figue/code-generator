@@ -1,16 +1,21 @@
-# 🔢 Juego de Adivinar el Número 🎮
+# 🎮 Juego de Adivinar el Número en Python
 
-¡Bienvenido al **Juego de Adivinar el Número**! Un sencillo y divertido programa en Python donde debes descubrir un número secreto. ¡Pon a prueba tu intuición! 🌟
+¡Bienvenido al **Juego de Adivinar el Número**! Un proyecto sencillo pero divertido para poner a prueba tu intuición numérica.
 
-## 📖 Descripción
-El programa genera un **número aleatorio entre 1 y 100**, y tu objetivo es adivinarlo en la menor cantidad de intentos posibles. ¡Recibirás pistas como "Muy alto" o "Muy bajo" en cada intento!
+## 🔍 ¿Qué hace el programa?
+- Genera un **número secreto aleatorio** entre 1 y 100.
+- Te da **pistas** (🔺 Más alto / 🔻 Más bajo) según tus intentos.
+- Lleva un registro de tus intentos restantes.
+- Celebra contigo si ganas 🎉 o te anima si pierdes 😢.
 
-## 🚀 Funcionalidades
-- 🎲 Generación de número aleatorio.
-- 📊 Contador de intentos.
-- 💡 Retroalimentación inmediata (alto/bajo).
-- ✨ Interfaz intuitiva y amigable.
+---
 
-## ⚙️ Instalación
-1. **Requisito**: Necesitas [Python](https://www.python.org/downloads/) instalado (versión 3.x).
-2. **Ejecución**: Descarga el archivo `adivinar_numero.py` y ejecútalo en tu terminal:
+## 🛠️ Cómo usarlo
+
+### Requisitos
+- Python 3 instalado en tu computadora.
+
+### Pasos para jugar
+1. Descarga o clona el repositorio.
+2. Abre una terminal en la carpeta del proyecto.
+3. Ejecuta el siguiente comando:
