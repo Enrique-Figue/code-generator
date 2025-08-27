@@ -1,40 +1,28 @@
-% Descripción: Este programa grafica una función matemática y su derivada en un intervalo dado,
-%              permitiendo visualizar la relación entre la función y su tasa de cambio.
+% Este programa grafica una función matemática y su derivada en el mismo eje,
+% permitiendo visualizar la relación entre ambas. Ideal para aprendizaje de cálculo.
 
-clc; clear; close all;  % Limpiar entorno
+clf; clear; clc;  % Limpiar figuras, workspace y consola
 
-% Solicitar entrada al usuario
-f = input('Ingrese la función f(x) (ejemplo: @(x) x.^2): ');
-x_inicio = input('Ingrese el valor inicial de x: ');
-x_final = input('Ingrese el valor final de x: ');
+syms x;  % Definir variable simbólica
+f = x^3 - 3*x^2 + 2*x;  % Función de ejemplo (polinomio cúbico)
+df = diff(f);  % Calcular derivada simbólica
 
-% Crear vector x y evaluar función
-x = linspace(x_inicio, x_final, 1000);
-y = f(x);
+% Convertir funciones simbólicas a funciones numéricas para graficar
+f_handle = matlabFunction(f);
+df_handle = matlabFunction(df);
 
-% Calcular derivada simbólica
-syms xs;  % Variable simbólica
-f_sym = f(xs);  % Función simbólica
-df_sym = diff(f_sym, xs);  % Derivada simbólica
-df = matlabFunction(df_sym);  % Convertir a función numérica
-dy = df(x);
+x_vals = linspace(-2, 4, 500);  % Rango de visualización
+y = f_handle(x_vals);
+dy = df_handle(x_vals);
 
-% Configurar figura
-figure('Color', 'white', 'Name', 'Función y Derivada');
-
-% Subplot para la función original
-subplot(2,1,1);
-plot(x, y, 'b', 'LineWidth', 1.5);
-title(['Función: f(x) = ' char(formula(f))]);
-xlabel('x'); ylabel('f(x)');
+% Configurar gráfico
+figure('Color', 'white');
+hold on;
 grid on;
-
-% Subplot para la derivada
-subplot(2,1,2);
-plot(x, dy, 'r', 'LineWidth', 1.5);
-title(['Derivada: f''(x) = ' char(df_sym)]);
-xlabel('x'); ylabel('f''(x)');
-grid on;
-
-% Ajustar espaciado entre subplots
-sgtitle('Análisis de Función y su Derivada', 'FontWeight', 'bold');
+plot(x_vals, y, 'b', 'LineWidth', 2, 'DisplayName', 'f(x) = x³ - 3x² + 2x');
+plot(x_vals, dy, 'r--', 'LineWidth', 2, 'DisplayName', 'f''(x) = 3x² - 6x + 2');
+title('Función y su Derivada');
+xlabel('x');
+ylabel('Valor');
+legend('show', 'Location', 'northwest');
+axis tight;
