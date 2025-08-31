@@ -1,43 +1,42 @@
 import random
 
-def generar_operacion():
-    operaciones = ['+', '-', '*', '/']
-    operacion = random.choice(operaciones)
-    a = random.randint(1, 10)
-    b = random.randint(1, 10)
+def generar_pregunta():
+    operadores = ['+', '-', '*', '/']
+    op = random.choice(operadores)
     
-    if operacion == '/':
-        while a % b != 0:
-            a = random.randint(1, 10)
-            b = random.randint(1, 10)
-    
-    return a, b, operacion
+    if op == '/':
+        num2 = random.randint(1, 10)
+        resultado = random.randint(1, 10)
+        num1 = num2 * resultado
+        return (num1, op, num2, resultado)
+    else:
+        num1 = random.randint(1, 20)
+        num2 = random.randint(1, 20)
+        if op == '+':
+            res = num1 + num2
+        elif op == '-':
+            res = num1 - num2
+        elif op == '*':
+            res = num1 * num2
+        return (num1, op, num2, res)
 
-def practicar_matematicas():
-    puntos = 0
-    intentos = 5
+def main():
+    print("Resuelve 5 problemas matemáticos:")
+    puntaje = 0
     
-    print("¡Practica operaciones matemáticas! Resuelve 5 problemas:")
+    for _ in range(5):
+        num1, op, num2, res = generar_pregunta()
+        try:
+            respuesta = float(input(f"¿Cuánto es {num1} {op} {num2}? "))
+            if respuesta == res:
+                print("¡Correcto!")
+                puntaje += 1
+            else:
+                print(f"Incorrecto. La respuesta correcta es {res}.")
+        except:
+            print(f"Entrada inválida. La respuesta correcta es {res}.")
     
-    for _ in range(intentos):
-        a, b, op = generar_operacion()
-        
-        while True:
-            try:
-                respuesta = float(input(f"\n{a} {op} {b} = "))
-                break
-            except ValueError:
-                print("Por favor, ingresa un número válido.")
-        
-        resultado = eval(f"{a} {op} {b}")
-        
-        if respuesta == resultado:
-            print("¡Correcto!")
-            puntos += 1
-        else:
-            print(f"Incorrecto. La respuesta correcta es {resultado}")
-    
-    print(f"\nJuego terminado. Tu puntuación: {puntos}/{intentos}")
+    print(f"Puntaje final: {puntaje}/5")
 
 if __name__ == "__main__":
-    practicar_matematicas()
+    main()

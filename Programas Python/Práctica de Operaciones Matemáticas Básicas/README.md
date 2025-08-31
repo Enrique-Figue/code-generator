@@ -1,22 +1,20 @@
-# 🧮 Práctica de Operaciones Matemáticas Básicas en Python
+# 🧮 Práctica de Operaciones Matemáticas Básicas
 
-¡Bienvenido/a al programa de **Operaciones Matemáticas Básicas**! Este proyecto permite realizar cálculos sencillos de forma interactiva mediante una interfaz de consola.
+Un programa simple en Python para realizar operaciones matemáticas básicas con una interfaz intuitiva.
 
-## 🚀 Características
+---
 
-- ✅ **Operaciones soportadas**:
-  - Suma (`+`)
-  - Resta (`-`)
-  - Multiplicación (`*`)
-  - División (`/`)
-- 📊 **Manejo de errores**: Detecta entradas inválidas y divisiones entre cero.
-- 🎨 **Interfaz limpia**: Menú interactivo con formato legible.
+## 📋 Descripción
+Este programa permite:
+- **Sumar** ➕
+- **Restar** ➖
+- **Multiplicar** ✖️
+- **Dividir** ➗
 
-## 📋 Requisitos
+Incluye manejo de errores y un menú interactivo para una experiencia fluida.
 
-- Python 3.6 o superior.
-- Terminal o consola para ejecutar el script.
+---
 
-## 🔧 Instalación
+## 🚀 Cómo Usarlo
 
-1. Clona el repositorio o descarga el archivo `operaciones.py`.
+1. **Clona el repositorio**:
