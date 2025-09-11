@@ -1,29 +1,41 @@
-def calcular_estadisticas():
-    # Solicitar lista de números al usuario
+import statistics
+
+def main():
+    numeros = []
+    print("Ingresa números para calcular estadísticas. Escribe 'fin' para terminar.")
+    
     while True:
-        entrada = input("Ingrese números separados por comas: ")
-        numeros = entrada.replace(' ', '').split(',')
-        
-        try:
-            lista_numeros = [float(num) for num in numeros]
+        entrada = input("Número: ")
+        if entrada.lower() == 'fin':
             break
+        try:
+            numeros.append(float(entrada))
         except ValueError:
-            print("Error: Asegúrese de ingresar solo números separados por comas. Intente de nuevo.")
+            print("¡Entrada inválida! Intenta nuevamente.")
     
-    # Calcular estadísticas
-    total = len(lista_numeros)
-    suma = sum(lista_numeros)
-    promedio = suma / total if total > 0 else 0
-    maximo = max(lista_numeros) if lista_numeros else None
-    minimo = min(lista_numeros) if lista_numeros else None
+    if not numeros:
+        print("No se ingresaron números válidos.")
+        return
     
-    # Mostrar resultados
-    print("\nEstadísticas:")
-    print(f"Cantidad de números: {total}")
-    print(f"Suma total: {suma}")
-    print(f"Promedio: {promedio:.2f}")
-    print(f"Máximo: {maximo}")
-    print(f"Mínimo: {minimo}")
+    print("\nOpciones:")
+    print("1. Media   2. Mediana   3. Moda   4. Rango   5. Desviación Estándar")
+    opcion = input("Selecciona una operación (1-5): ")
+    
+    try:
+        if opcion == '1':
+            print(f"Media: {statistics.mean(numeros):.2f}")
+        elif opcion == '2':
+            print(f"Mediana: {statistics.median(numeros):.2f}")
+        elif opcion == '3':
+            print(f"Moda: {statistics.multimode(numeros)}")
+        elif opcion == '4':
+            print(f"Rango: {max(numeros) - min(numeros):.2f}")
+        elif opcion == '5':
+            print(f"Desviación Estándar: {statistics.stdev(numeros):.2f}")
+        else:
+            print("Opción no válida.")
+    except statistics.StatisticsError as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
-    calcular_estadisticas()
+    main()
