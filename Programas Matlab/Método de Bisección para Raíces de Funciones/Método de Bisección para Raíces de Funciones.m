@@ -1,32 +1,60 @@
-% Descripción: Encuentra una raíz de f(x) en [a,b] usando el método de bisección.
-%              Muestra iteraciones para ilustrar convergencia del método.
+% Descripción: Encuentra una raíz de la función f(x) en el intervalo [a,b] usando el método de bisección.
+%   Incluye visualización gráfica de la función y la raíz encontrada.
+%   Funciona para funciones continuas que cruzan el eje x en el intervalo dado.
 
-f = @(x) x^3 - 2*x - 5;  % Función a analizar (modifica esta línea para probar otras)
-a = input('Ingrese límite inferior a: ');
-b = input('Ingrese límite superior b: ');
-tol = input('Ingrese tolerancia (ej: 1e-6): ');
-max_iter = input('Ingrese máximo iteraciones: ');
+clc; clear; close all;
 
-if f(a) * f(b) >= 0  % Verifica condición inicial del teorema de Bolzano
-    error('Error: f(a) y f(b) deben tener signos opuestos.');
+% Definir función de ejemplo (modificable)
+f = @(x) x^3 - 2*x - 5;  % Función a analizar
+
+% Parámetros del método
+a = 2;          % Extremo izquierdo del intervalo inicial
+b = 3;          % Extremo derecho del intervalo inicial
+tolerancia = 1e-6;  % Precisión deseada
+max_iter = 100;     % Número máximo de iteraciones
+
+% Verificar teorema de Bolzano
+if f(a) * f(b) >= 0
+    error('La función no cambia de signo en el intervalo [a,b]. Elija nuevos valores.');
 end
 
-fprintf('\nIter |   a      c      b    |   f(c)    \n');
-fprintf('-----|---------------------|------------\n');
+% Inicializar variables
+iter = 0;
+aproximacion = (a + b)/2;
 
-for iter = 1:max_iter
-    c = (a + b) / 2;      % Calcula punto medio
-    fc = f(c);            % Evalúa función en c
+% Algoritmo de bisección
+while (b - a)/2 > tolerancia && iter < max_iter
+    c = (a + b)/2;
     
-    fprintf('%4d | %6.4f %6.4f %6.4f | %9.2e\n', iter, a, c, b, fc);
-    
-    if abs(fc) < tol      % Condición de parada por tolerancia
-        break;
-    elseif f(a) * fc < 0  % Decide nuevo intervalo
-        b = c;
+    if f(c) == 0
+        break;  % Encontramos la raíz exacta
+    elseif f(a) * f(c) < 0
+        b = c;  % La raíz está en el subintervalo izquierdo
     else
-        a = c;
+        a = c;  % La raíz está en el subintervalo derecho
     end
+    
+    iter = iter + 1;
+    aproximacion = (a + b)/2;
 end
 
-fprintf('\nResultado: Raíz en x = %.6f (f(x) = %.2e)\n', c, fc);
+% Mostrar resultados
+fprintf('Raíz encontrada: %.6f\n', aproximacion);
+fprintf('Iteraciones realizadas: %d\n', iter);
+fprintf('Valor en la raíz: %.2e\n', f(aproximacion));
+
+% Visualización gráfica
+x = linspace(a-1, b+1, 1000);
+y = f(x);
+
+figure;
+plot(x, y, 'b-', 'LineWidth', 1.5);
+hold on;
+plot(aproximacion, f(aproximacion), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'r');
+hline = refline(0,0);
+hline.Color = 'k';
+xlabel('x');
+ylabel('f(x)');
+title('Método de Bisección: Raíz encontrada');
+legend('Función', 'Raíz aproximada', 'Eje x', 'Location', 'northwest');
+grid on;

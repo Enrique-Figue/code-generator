@@ -1,15 +1,19 @@
-# 🎯 Método de Bisección para Raíces de Funciones en MATLAB
+# 📉 Método de Bisección para Raíces de Funciones en MATLAB
 
-Un programa interactivo que encuentra raíces de funciones utilizando el método de bisección. Ideal para análisis numérico y visualización de la convergencia.
+¡Bienvenido al programa de **Método de Bisección** en MATLAB! Este algoritmo encuentra raíces de funciones continuas en un intervalo dado, combinando precisión y simplicidad. 🌟
 
-## 📋 Requisitos
-- **MATLAB R2020b o superior** (disponible en [MathWorks](https://www.mathworks.com/)).
-- Conocimientos básicos de sintaxis de MATLAB.
+## 📋 Descripción
+El método de bisección aproxima la raíz de una función `f(x)` en el intervalo `[a, b]` mediante divisiones sucesivas, asegurando la convergencia siempre que `f(a)` y `f(b)` tengan signos opuestos.
 
-## 🚀 Instalación
-1. Clona el repositorio o descarga el archivo `bisection_method.m`.
-2. Abre MATLAB y navega al directorio del archivo.
+## 🚀 Características
+- ✅ Validación automática del intervalo inicial.
+- 🔄 Límite de iteraciones configurable.
+- 📊 Generación de tablas de resultados y gráficos de convergencia.
+- ⚙️ Tolerancia ajustable para la precisión deseada.
 
-## 🛠 Uso
-### 1. Define tu función
-Crea una función en un archivo `mi_funcion.m`:
+## 📌 Prerrequisitos
+- **MATLAB R2018a** o superior.
+
+## 🛠️ Uso
+1. **Defina la función** `f(x)` en un archivo `.m` (ej: `f = @(x) x^2 - 2;`).
+2. **Ejecute el programa** llamando a la función:
