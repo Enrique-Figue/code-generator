@@ -1,29 +1,18 @@
-# 🧮 Calculadora Educativa con Manejo de Errores 📚
+# 🧮 Calculadora Educativa con Manejo de Errores 🚀
 
-¡Bienvenido/a a una calculadora intuitiva diseñada para aprender matemáticas con mensajes descriptivos y manejo seguro de errores!
+¡Bienvenido/a a esta calculadora interactiva diseñada para aprender matemáticas con manejo seguro de errores! Ideal para estudiantes y educadores.
 
----
+![Calculadora Demo](https://via.placeholder.com/600x400?text=Interfaz+de+Calculadora+Interactiva)
 
-## ✨ Características principales
-- **Operaciones soportadas:**
-  - ➕ Suma
-  - ➖ Resta
-  - ✖️ Multiplicación
-  - ➗ División (incluyendo división por cero)
-  - 💪 Potenciación
-  - 📐 Raíz cuadrada
-- **Manejo de errores con mensajes descriptivos:**
-  - 🚨 Entradas no numéricas
-  - ❌ Operaciones inválidas
-  - 🔄 Opción de reintentar después de errores
-- **Interfaz interactiva** con opción de realizar nuevos cálculos
+## ✨ Características Principales
+- ✔️ Operaciones básicas: suma, resta, multiplicación, división
+- 📚 Modo educativo con explicaciones paso a paso
+- 🛡️ Manejo robusto de errores:
+  - Entradas no numéricas
+  - División por cero
+  - Valores fuera de rango
+- 🎨 Interfaz intuitiva con menú interactivo
+- 💡 Mensajes explicativos para cada error detectado
 
----
-
-## 🛠️ Cómo usar
-
-### Requisitos
-- Python 3.x instalado
-
-### Pasos:
-1. **Ejecuta el programa** desde tu terminal:
+## 📥 Instalación
+1. Clona el repositorio:

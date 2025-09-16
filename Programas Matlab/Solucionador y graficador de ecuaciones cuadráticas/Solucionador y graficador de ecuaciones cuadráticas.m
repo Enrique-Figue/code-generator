@@ -1,48 +1,54 @@
-% Descripción: Resuelve una ecuación cuadrática ax² + bx + c = 0 y grafica la función
+clc; clear; close all;
 
-clc;
-clear;
-
-% Entrada de coeficientes
-a = input('Ingrese el coeficiente a: ');
-b = input('Ingrese el coeficiente b: ');
-c = input('Ingrese el coeficiente c: ');
-
-% Verificar si es una ecuación cuadrática
-if a == 0
-    error('El coeficiente "a" no puede ser cero en una ecuación cuadrática');
+% Solicitar coeficientes al usuario
+a = input('Introduzca el coeficiente a: ');
+while a == 0
+    a = input('a no puede ser cero. Ingrese nuevo valor de a: ');
 end
+b = input('Introduzca el coeficiente b: ');
+c = input('Introduzca el coeficiente c: ');
 
 % Calcular discriminante
 discriminante = b^2 - 4*a*c;
 
-% Calcular raíces
+% Determinar tipo de raíces y calcularlas
 if discriminante > 0
-    raiz1 = (-b + sqrt(discriminante))/(2*a);
-    raiz2 = (-b - sqrt(discriminante))/(2*a);
-    fprintf('Dos raíces reales:\n');
-    fprintf('Raíz 1: %.2f\nRaíz 2: %.2f\n', raiz1, raiz2);
+    x1 = (-b + sqrt(discriminante))/(2*a);
+    x2 = (-b - sqrt(discriminante))/(2*a);
+    disp(['Dos raíces reales: x1 = ', num2str(x1), ', x2 = ', num2str(x2)]);
 elseif discriminante == 0
-    raiz = -b/(2*a);
-    fprintf('Una raíz real doble:\n');
-    fprintf('Raíz: %.2f\n', raiz);
+    x = -b/(2*a);
+    disp(['Raíz única real: x = ', num2str(x)]);
 else
-    parte_real = -b/(2*a);
-    parte_imag = sqrt(abs(discriminante))/(2*a);
-    fprintf('Raíces complejas conjugadas:\n');
-    fprintf('Raíz 1: %.2f + %.2fi\n', parte_real, parte_imag);
-    fprintf('Raíz 2: %.2f - %.2fi\n', parte_real, parte_imag);
+    realPart = -b/(2*a);
+    imagPart = sqrt(-discriminante)/(2*a);
+    disp(['Raíces complejas: x1 = ', num2str(realPart), ' + ', num2str(imagPart), 'i, x2 = ', num2str(realPart), ' - ', num2str(imagPart), 'i']);
 end
 
-% Crear vector x y calcular y
-x = linspace(-10, 10, 400);
+% Graficar la función cuadrática
+x = linspace(-b/(2*a)-5, -b/(2*a)+5, 400); % Rango centrado en el vértice
 y = a*x.^2 + b*x + c;
 
-% Graficar función
 figure;
-plot(x, y, 'r', 'LineWidth', 1.5);
+plot(x, y, 'LineWidth', 1.5);
+hold on;
+title(['Función cuadrática: ', num2str(a), 'x² + ', num2str(b), 'x + ', num2str(c)]);
 xlabel('x');
 ylabel('f(x)');
-title(['Gráfico de f(x) = ', num2str(a), 'x² + ', num2str(b), 'x + ', num2str(c)]);
 grid on;
-legend('f(x) = ax² + bx + c');
+
+% Marcar raíces reales si existen
+if discriminante >= 0
+    if discriminante == 0
+        plot(x, zeros(size(x)), 'k--');
+        plot(x, a*x.^2 + b*x + c, 'b');
+        plot(x, x*0, 'k--');
+        plot(x(200), y(200), 'ro', 'MarkerSize', 8);
+    else
+        plot(x1, 0, 'ro', x2, 0, 'ro', 'MarkerSize', 8);
+    end
+    legend('Función', 'Raíces', 'Location', 'best');
+else
+    legend('Función', 'Location', 'best');
+end
+hold off;
