@@ -1,17 +1,24 @@
-# 🎮 Juego de Adivinanza de Números en Python 🔢
+# 🎮 **Juego de Adivinanza de Números** 🔢
 
-¡Adivina un número secreto y demuestra tus habilidades! 🌟
+¡Bienvenido al **Juego de Adivinanza de Números** en Python! Un desafío divertido y educativo para poner a prueba tu intuición. ⚡
 
-## 📚 Descripción
-Un programa interactivo en Python donde debes adivinar un número entre **1 y 100** en solo **10 intentos**. ¡Recibirás pistas después de cada intento! 🕵️♂️✨
+---
 
-## 🚀 Características
-- ✅ Generación aleatoria del número secreto.
-- ✅ Contador de intentos restantes.
-- ✅ Pistas visuales (↑↓) para guiarte.
-- ✅ Mensajes personalizados con tu nombre.
-- ✅ Interfaz amigable en la terminal.
+## 🚀 **¿Qué hace el programa?**
+- 🎯 **Objetivo**: Adivinar un número aleatorio generado por la computadora.
+- 📈 **Dificultad adaptable**: Elige entre 3 niveles de dificultad:
+  1. **Fácil** (1-50, 10 intentos)
+  2. **Normal** (1-100, 7 intentos)
+  3. **Difícil** (1-200, 5 intentos)
+- 💬 **Retroalimentación**: Pistas como "Demasiado alto" o "Demasiado bajo".
+- 🏆 **Victoria**: Mensaje especial al adivinar correctamente.
+- ❌ **Fin del juego**: Alerta si se agotan los intentos.
 
-## 📝 Cómo Usar
-1. **Requisitos**: Python 3.x instalado.
-2. **Descarga el código**:
+---
+
+## 🛠️ **¿Cómo usarlo?**
+### **Prerrequisitos**
+- Python 3.x instalado ([Descarga aquí](https://www.python.org/downloads/))
+
+### **Pasos**
+1. Clona/descarga el repositorio:
