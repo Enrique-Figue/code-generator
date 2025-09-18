@@ -1,22 +1,30 @@
-# 🧮 Solucionador de Ecuaciones Cuadráticas  
+# 🚀 Solucionador de Ecuaciones Cuadráticas en Python
 
-**¡Resuelve ecuaciones cuadráticas con estilo!** Este programa en Python calcula las raíces reales o complejas de una ecuación de la forma \( ax^2 + bx + c = 0 \) y muestra el procedimiento paso a paso.  
-
----
-
-## 🌟 Características  
-- ✅ Calcula soluciones reales o complejas.  
-- 🔍 Verifica si los coeficientes ingresados son válidos.  
-- 📝 Muestra el procedimiento matemático detallado.  
-- 🚀 Maneja casos especiales (ej. coeficiente *a* igual a cero).  
+Un programa simple pero eficaz para resolver ecuaciones cuadráticas de la forma **ax² + bx + c = 0**, calculando raíces reales o complejas según el discriminante.
 
 ---
 
-## 📥 Instalación  
-1. Descarga el archivo `solucionador.py`.  
-2. Asegúrate de tener Python 3.6 o superior instalado.  
+## 📝 ¿Qué hace este programa?
+- **Calcula el discriminante** para determinar el tipo de soluciones.
+- **Muestra raíces reales** si el discriminante es positivo.
+- **Muestra raíces complejas** si el discriminante es negativo.
+- **Validación de entrada**: Asegura que los coeficientes sean números válidos.
 
 ---
 
-## 🖥️ Uso  
-Ejecuta el programa desde la terminal:
+## 🛠️ Características destacadas
+✅ Interfaz intuitiva en la terminal.  
+✅ Explicación paso a paso incluida en los resultados.  
+✅ Manejo de errores para entradas no numéricas.  
+✅ Fórmulas matemáticas implementadas con precisión.
+
+---
+
+## 🖥️ Cómo usar el programa
+
+### Requisitos
+- Python 3.x instalado.
+
+### Pasos:
+1. Clona el repositorio o descarga el archivo `quadratic_solver.py`.
+2. Ejecuta en tu terminal:

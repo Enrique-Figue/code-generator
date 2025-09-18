@@ -1,28 +1,39 @@
+import math
 import cmath
 
-a = float(input("Coeficiente a: "))
-b = float(input("Coeficiente b: "))
-c = float(input("Coeficiente c: "))
+print("¡Bienvenido al Solucionador de Ecuaciones Cuadráticas!")
+print("Ingrese los coeficientes de la ecuación ax² + bx + c = 0")
 
-if a == 0:
-    if b == 0:
-        print("Ecuación no válida" if c != 0 else "Todos los números reales son solución")
-    else:
-        x = -c / b
-        print(f"Solución lineal: x = {x:.2f}")
-else:
-    discriminante = b**2 - 4*a*c
-    raiz = cmath.sqrt(discriminante)
-    x1 = (-b + raiz) / (2*a)
-    x2 = (-b - raiz) / (2*a)
+try:
+    a = float(input("a: "))
+    b = float(input("b: "))
+    c = float(input("c: "))
     
-    print(f"\nDiscriminante: {discriminante:.2f}")
-    if discriminante > 0:
-        print("Dos soluciones reales:")
-        print(f"x1 = {x1.real:.2f}\nx2 = {x2.real:.2f}")
-    elif discriminante == 0:
-        print("Una solución real doble:")
-        print(f"x = {x1.real:.2f}")
+    if a == 0:
+        if b == 0:
+            if c == 0:
+                print("La ecuación tiene infinitas soluciones.")
+            else:
+                print("La ecuación no tiene solución.")
+        else:
+            x = -c / b
+            print(f"Es una ecuación lineal. Solución: x = {x:.2f}")
     else:
-        print("Dos soluciones complejas conjugadas:")
-        print(f"x1 = {x1:.2f}\nx2 = {x2:.2f}")
+        discriminante = b**2 - 4*a*c
+        if discriminante > 0:
+            raiz = math.sqrt(discriminante)
+            x1 = (-b + raiz) / (2*a)
+            x2 = (-b - raiz) / (2*a)
+            print(f"Dos raíces reales: x1 = {x1:.2f}, x2 = {x2:.2f}")
+        elif discriminante == 0:
+            x = -b / (2*a)
+            print(f"Raíz única real: x = {x:.2f}")
+        else:
+            raiz = cmath.sqrt(discriminante)
+            x1 = (-b + raiz) / (2*a)
+            x2 = (-b - raiz) / (2*a)
+            print(f"Dos raíces complejas: x1 = {x1:.2f}, x2 = {x2:.2f}")
+except ValueError:
+    print("Error: Ingrese valores numéricos válidos.")
+except ZeroDivisionError:
+    print("Error: División por cero.")
